@@ -296,6 +296,11 @@
                             <h5>Pembayaran tidak cocok direkening koran STKIP Persada Khatulistiwa.</h5>
                         @endif
                         {{-- @elseif() --}}
+                    @elseif($data->metode_bayar == null && $data->valid_bayar != null)
+                        <div class="alert alert-success" role="alert">
+                            <h5>Pembayaran anda sudah kami terima. <br> Untuk melanjutkan pendaftaran silahkan klik tombol
+                                dibawah ini.</h5>
+                        </div>
                     @endif
                 @elseif($cekputus->status_penerimaan == 2)
                     <p>Mohon Maaf Anda Dinyatakan Tidak Lulus</p>
@@ -320,7 +325,7 @@
         document.getElementById('pay-button').onclick = function() {
             snap.pay('{{ $snapToken }}', {
                 onSuccess: function(result) {
-                    window.location.href = "{{ url('pembayaran') }}";
+                    window.location.href = "{{ url('after-payment') }}";
                     // alert('Pembayaran Berhasil!');
                 },
                 onPending: function(result) {

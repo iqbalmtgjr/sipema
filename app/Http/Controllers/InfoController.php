@@ -75,18 +75,18 @@ class InfoController extends Controller
         return view('info.pembayaran', compact('cekputus', 'data', 'biaya', 'cekbukti', 'cekjalur', 'snapToken'));
     }
 
-    public function valid(Request $request)
+    public function valid()
     {
-        $serverKey = config('midtrans.server_key');
-        $hashed = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
-        if ($hashed == $request->signature_key) {
-            if ($request->transaction_status == "capture") {
-                $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
-                $data->update(['valid_bayar' => 2]);
-            }
-        }
+        // $serverKey = config('midtrans.server_key');
+        // $hashed = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
+        // if ($hashed == $request->signature_key) {
+        //     if ($request->transaction_status == "capture") {
+        $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+        $data->update(['valid_bayar' => 2]);
+        // }
+        // }
 
-        return redirect('infoPmb');
+        return redirect('pembayaran');
     }
 
     public function postMetodeBayar(Request $request)
