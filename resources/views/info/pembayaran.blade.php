@@ -320,7 +320,8 @@
         document.getElementById('pay-button').onclick = function() {
             snap.pay('{{ $snapToken }}', {
                 onSuccess: function(result) {
-                    alert('Pembayaran Berhasil!');
+                    window.location.href = "{{ url('pembayaran') }}";
+                    // alert('Pembayaran Berhasil!');
                 },
                 onPending: function(result) {
                     alert('Pembayaran Belum Selesai!');

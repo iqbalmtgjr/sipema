@@ -65,7 +65,7 @@ class InfoController extends Controller
                 'gross_amount' => $cekjalur->jalur == "prestasi" ? '200000' : '250000',
             ),
             'customer_details' => array(
-                'name' => $data->nama_siswa,
+                'first_name' => $data->nama_siswa,
                 'email' => $data->email_akun_siswa,
                 'phone' => $data->hp_siswa,
             ),
@@ -73,6 +73,20 @@ class InfoController extends Controller
 
         $snapToken = Snap::getSnapToken($params);
         return view('info.pembayaran', compact('cekputus', 'data', 'biaya', 'cekbukti', 'cekjalur', 'snapToken'));
+    }
+
+    public function valid(Request $request)
+    {
+        $serverKey = config('midtrans.server_key');
+        $hashed = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
+        if ($hashed == $request->signature_key) {
+            if ($request->transaction_status == "capture") {
+                $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+                $data->update(['valid_bayar' => 2]);
+            }
+        }
+
+        return redirect('infoPmb');
     }
 
     public function postMetodeBayar(Request $request)
