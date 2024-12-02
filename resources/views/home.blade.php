@@ -91,7 +91,8 @@
                                         <strong>Gelombang 1</strong>
                                     </button>
                                 </h2>
-                                <div id="collapseGelombang1" class="accordion-collapse collapse show"
+                                <div id="collapseGelombang1"
+                                    class="accordion-collapse collapse {{ $gelombang == 1 ? 'show' : '' }}"
                                     aria-labelledby="headingGelombang1" data-bs-parent="#accordionJadwalPendaftaran">
                                     <div class="accordion-body">
                                         <strong>Jalur Tes</strong>
@@ -126,7 +127,8 @@
                                         <strong>Gelombang 2</strong>
                                     </button>
                                 </h2>
-                                <div id="collapseGelombang2" class="accordion-collapse collapse"
+                                <div id="collapseGelombang2"
+                                    class="accordion-collapse collapse {{ $gelombang == 2 ? 'show' : '' }}"
                                     aria-labelledby="headingGelombang2" data-bs-parent="#accordionJadwalPendaftaran">
                                     <div class="accordion-body">
                                         <strong>Jalur Tes</strong>
@@ -161,7 +163,8 @@
                                         <strong>Gelombang 3</strong>
                                     </button>
                                 </h2>
-                                <div id="collapseGelombang3" class="accordion-collapse collapse"
+                                <div id="collapseGelombang3"
+                                    class="accordion-collapse collapse {{ $gelombang == 3 ? 'show' : '' }}"
                                     aria-labelledby="headingGelombang3" data-bs-parent="#accordionJadwalPendaftaran">
                                     <div class="accordion-body">
                                         <strong>Jalur Tes</strong>

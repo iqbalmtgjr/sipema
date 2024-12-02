@@ -7,6 +7,7 @@ use App\Mail\SendAkun;
 use App\Models\Pmbakun;
 use App\Models\Pmbprodi;
 use App\Models\Pmbsiswa;
+use App\Models\Gelombang;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +61,7 @@ class AuthController extends Controller
         $rand_ref = Str::random(4);
         $rand_ref = rand(100000, 999999);
 
+        $gelombang = Gelombang::find(1)->gel;
 
         Pmbakun::create([
             'pengenal_akun' => $rand_akun,
@@ -67,7 +69,7 @@ class AuthController extends Controller
             'kunci_akun_siswa' => Hash::make($rand_password),
             'kuncigudang' => $rand_password,
             'status_akun' => 0,
-            'gelombang' => 1,
+            'gelombang' => $gelombang,
             'alamat_ip_daftar' => $request->ip(),
             'daftar_akun' => now()->timestamp,
         ]);
