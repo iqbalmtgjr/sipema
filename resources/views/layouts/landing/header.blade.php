@@ -59,7 +59,8 @@
 
             <div class="container position-relative d-flex align-items-center justify-content-between">
                 <a href="index.html" class="logo d-flex align-items-center me-auto">
-                    <img src="{{ asset('') }}assets/img/stkip.png" alt="">
+                    {{-- <img src="{{ asset('') }}assets/img/stkip.png" alt=""> --}}
+                    <img src="{{ asset('') }}landing/img/logo1.png" alt="">
                     {{-- <h1 class="sitename">Persada Khatulistiwa</h1> --}}
                 </a>
 
