@@ -9,6 +9,7 @@ use App\Http\Controllers\OrtuController;
 use App\Http\Controllers\CalonController;
 use App\Http\Controllers\InfopmbController;
 use App\Http\Controllers\FileuploadController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PendidikanController;
 use App\Http\Controllers\PkkmbController;
 
@@ -23,6 +24,8 @@ use App\Http\Controllers\PkkmbController;
 |
 */
 
+Route::get('/', [HomeController::class, 'index']);
+
 Route::group(['middleware' => 'isTamu'], function () {
     // pmb tutup
     // Route::get('/', function() {
@@ -30,7 +33,7 @@ Route::group(['middleware' => 'isTamu'], function () {
     // });
 
     // Route::get('/uncin', [AuthController::class, 'registertes']);
-    Route::get('/', [AuthController::class, 'register']);
+    Route::get('/register', [AuthController::class, 'register']);
     Route::post('register', [AuthController::class, 'registerPost']);
     Route::get('/login', [AuthController::class, 'login']);
     Route::post('login', [AuthController::class, 'loginPost']);
