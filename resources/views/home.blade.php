@@ -70,6 +70,130 @@
 
     </section><!-- /Hero Section -->
 
+    <section id="jadwal" class="departments section light-background">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Jadwal Pendaftaran</h2>
+            <p>Informasi mengenai jadwal pendaftaran untuk berbagai jalur yang tersedia di STKIP Persada Khatulistiwa.
+                Jika Anda memiliki pertanyaan terkait jadwal pendaftaran, silakan hubungi panitia PMB atau kirimkan
+                pesan melalui WhatsApp (+62821-5596-4080).
+            </p>
+
+            <div class="container" data-aos="fade-up" data-aos-delay="100">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="accordion" id="accordionJadwalPendaftaran">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingGelombang1">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseGelombang1" aria-expanded="true"
+                                        aria-controls="collapseGelombang1">
+                                        <strong>Gelombang 1</strong>
+                                    </button>
+                                </h2>
+                                <div id="collapseGelombang1" class="accordion-collapse collapse show"
+                                    aria-labelledby="headingGelombang1" data-bs-parent="#accordionJadwalPendaftaran">
+                                    <div class="accordion-body">
+                                        <strong>Jalur Tes</strong>
+                                        <p>
+                                            <strong>Pendaftaran:</strong> {{ $jadwal_gel1->daftar_buka }} <br>
+                                            <strong>Pelaksanaan Tes:</strong> {{ $jadwal_gel1->tes_lak }} <br>
+                                            <strong>Pengumuman Hasil:</strong> {{ $jadwal_gel1->tes_mum }} <br>
+                                            <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel1->regi }}
+                                        </p> <br>
+                                        <strong>Jalur Prestasi</strong>
+                                        <p>
+                                            <strong>Pendaftaran:</strong> {{ $jadwal_gel1->daftar_buka }} <br>
+                                            <strong>Pengumuman Hasil:</strong> {{ $jadwal_gel1->pres_mum1 }} <br>
+                                            <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel1->regi }}
+                                        </p> <br>
+                                        <strong>Jalur Reguler 2</strong>
+                                        <p>
+                                            <strong>Pendaftaran:</strong> {{ $reguler2->daftar_buka }} <br>
+                                            <strong>Pengecekan Kuota per-prodi:</strong> {{ $reguler2->pres_mum1 }}
+                                            <br>
+                                            <strong>Pengumuman Hasil:</strong> {{ $reguler2->pres_mum2 }} <br>
+                                            <strong>Pembayaran Registrasi:</strong> {{ $reguler2->regi }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingGelombang2">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseGelombang2" aria-expanded="false"
+                                        aria-controls="collapseGelombang2">
+                                        <strong>Gelombang 2</strong>
+                                    </button>
+                                </h2>
+                                <div id="collapseGelombang2" class="accordion-collapse collapse"
+                                    aria-labelledby="headingGelombang2" data-bs-parent="#accordionJadwalPendaftaran">
+                                    <div class="accordion-body">
+                                        <strong>Jalur Tes</strong>
+                                        <p>
+                                            <strong>Pendaftaran:</strong> {{ $jadwal_gel2->daftar_buka }} <br>
+                                            <strong>Pelaksanaan Tes:</strong> {{ $jadwal_gel2->tes_lak }} <br>
+                                            <strong>Pengumuman Hasil:</strong> {{ $jadwal_gel2->tes_mum }} <br>
+                                            <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel2->regi }}
+                                        </p> <br>
+                                        <strong>Jalur Prestasi</strong>
+                                        <p>
+                                            <strong>Pendaftaran:</strong> {{ $jadwal_gel2->daftar_buka }} <br>
+                                            <strong>Pengumuman Hasil:</strong> {{ $jadwal_gel2->pres_mum1 }} <br>
+                                            <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel2->regi }}
+                                        </p> <br>
+                                        <strong>Jalur Reguler 2</strong>
+                                        <p>
+                                            <strong>Pendaftaran:</strong> {{ $reguler2->daftar_buka }} <br>
+                                            <strong>Pengecekan Kuota per-prodi:</strong> {{ $reguler2->pres_mum1 }}
+                                            <br>
+                                            <strong>Pengumuman Hasil:</strong> {{ $reguler2->pres_mum2 }} <br>
+                                            <strong>Pembayaran Registrasi:</strong> {{ $reguler2->regi }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingGelombang3">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseGelombang3" aria-expanded="false"
+                                        aria-controls="collapseGelombang3">
+                                        <strong>Gelombang 3</strong>
+                                    </button>
+                                </h2>
+                                <div id="collapseGelombang3" class="accordion-collapse collapse"
+                                    aria-labelledby="headingGelombang3" data-bs-parent="#accordionJadwalPendaftaran">
+                                    <div class="accordion-body">
+                                        <strong>Jalur Tes</strong>
+                                        <p>
+                                            <strong>Pendaftaran:</strong> {{ $jadwal_gel3->daftar_buka }} <br>
+                                            <strong>Pelaksanaan Tes:</strong> {{ $jadwal_gel3->tes_lak }} <br>
+                                            <strong>Pengumuman Hasil:</strong> {{ $jadwal_gel3->tes_mum }} <br>
+                                            <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel3->regi }}
+                                        </p> <br>
+                                        <strong>Jalur Prestasi</strong>
+                                        <p>
+                                            <strong>Pendaftaran:</strong> {{ $jadwal_gel3->daftar_buka }} <br>
+                                            <strong>Pengumuman Hasil:</strong> {{ $jadwal_gel3->pres_mum1 }} <br>
+                                            <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel3->regi }}
+                                        </p> <br>
+                                        <strong>Jalur Reguler 2</strong>
+                                        <p>
+                                            <strong>Pendaftaran:</strong> {{ $reguler2->daftar_buka }} <br>
+                                            <strong>Pengecekan Kuota per-prodi:</strong> {{ $reguler2->pres_mum1 }}
+                                            <br>
+                                            <strong>Pengumuman Hasil:</strong> {{ $reguler2->pres_mum2 }} <br>
+                                            <strong>Pembayaran Registrasi:</strong> {{ $reguler2->regi }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Section Title -->
+    </section>
     <!-- About Section -->
     <section id="syarat" class="about section">
 
@@ -91,7 +215,7 @@
                     <table class="table table-bordered" style="width: 100%; text-align: left;">
                         <tbody>
                             <tr>
-                                <td style="padding-bottom: 5px; vertical-align: middle;">
+                                <td style="padding-bottom: 5px; text-align: center; vertical-align: middle;">
                                     <i style="color: green;" class="fas fa-trophy"></i>
                                     Jalur Prestasi
                                 </td>
@@ -110,8 +234,8 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-bottom: 5px; vertical-align: middle;">
-                                    <i style="color: green;" class="fas fa-check-circle"></i>
+                                <td style="padding-bottom: 5px; text-align: center; vertical-align: middle;">
+                                    <i style="color: green;" class="fas fa-pencil-alt"></i>
                                     Jalur Tes
                                 </td>
                                 <td style="padding-bottom: 5px;">
@@ -130,7 +254,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td style="padding-bottom: 5px; vertical-align: middle;">
+                                <td style="padding-bottom: 5px; text-align: center; vertical-align: middle;">
                                     <i style="color: green;" class="fas fa-users"></i>
                                     Jalur Reguler 2
                                 </td>
@@ -706,7 +830,7 @@
     </section><!-- /Gallery Section --> --}}
 
     <!-- Contact Section -->
-    <section id="contact" class="contact section">
+    <section id="kontak" class="contact section">
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">

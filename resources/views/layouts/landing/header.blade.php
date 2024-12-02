@@ -43,7 +43,9 @@
                 <div class="contact-info d-flex align-items-center">
                     <i class="bi bi-envelope d-flex align-items-center"><a
                             href="mailto:persada@persadakhatulistiwa.ac.id">persada@persadakhatulistiwa.ac.id</a></i>
-                    <i class="bi bi-phone d-flex align-items-center ms-4"><span>+62 821-5596-4080</span></i>
+                    <i class="bi bi-phone d-flex align-items-center ms-4"> <a
+                            href="https://api.whatsapp.com/send?phone=6282155964080&text=Halo%20admin%20STKIP"
+                            target="_blank"><span>+62 821-5596-4080</span></a></i>
                 </div>
                 <div class="social-links d-none d-md-flex align-items-center">
                     {{-- <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a> --}}
@@ -58,7 +60,7 @@
         <div class="branding d-flex align-items-center">
 
             <div class="container position-relative d-flex align-items-center justify-content-between">
-                <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <a href="{{ url('/') }}" class="logo d-flex align-items-center me-auto">
                     {{-- <img src="{{ asset('') }}assets/img/stkip.png" alt=""> --}}
                     <img src="{{ asset('') }}landing/img/logo1.png" alt="">
                     {{-- <h1 class="sitename">Persada Khatulistiwa</h1> --}}
@@ -66,11 +68,13 @@
 
                 <nav id="navmenu" class="navmenu">
                     <ul>
-                        <li><a href="#hero" class="active">Beranda<br></a></li>
-                        <li><a href="#syarat">Syarat Pendaftaran</a></li>
+                        <li><a href="#" class="active">Beranda<br></a></li>
+                        <li><a href="#jadwal">Jadwal</a></li>
+                        <li><a href="#syarat">Syarat</a></li>
                         {{-- <li><a href="#jalur">Jalur Penerimaan</a></li> --}}
-                        <li><a href="#alur">Alur Pendaftaran</a></li>
-                        <li><a href="#biaya">Biaya Pendaftaran</a></li>
+                        <li><a href="#alur">Alur</a></li>
+                        <li><a href="#biaya">Biaya</a></li>
+                        <li><a href="#kontak">Kontak</a></li>
                         <li><a href="/register" class="cta-btn btn btn-primary">Daftar Sekarang</a></li>
                         {{-- <li class="btn btn-primary"><a href="/login" class="btn btn-success">Masuk</a></li> --}}
                         {{-- <li><a href="#doctors">Doctors</a></li> --}}

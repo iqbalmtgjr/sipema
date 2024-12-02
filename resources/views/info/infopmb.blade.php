@@ -1,11 +1,13 @@
 @extends('layouts.master')
 @section('content')
-    @if(isset($regis) && $regis == true)
+    @if (isset($regis) && $regis == true)
         <div class="text-center alert alert-success" role="alert">
             <strong>Klik dibawah ini untuk mendaftar PKKMB 2024</strong> <br>
-            <a class="btn btn-primary btn-sm" href="#" data-toggle="modal" data-target="#pkkmb"><strong>Daftar PKKMB</strong></a>
+            <a class="btn btn-primary btn-sm" href="#" data-toggle="modal" data-target="#pkkmb"><strong>Daftar
+                    PKKMB</strong></a>
         </div>
-        <div class="modal fade" id="pkkmb" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="pkkmb" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -19,7 +21,8 @@
                             @csrf
                             <div class="form-group">
                                 <label for="provinsi">Provinsi:</label>
-                                <input type="text" class="form-control @error('provinsi') is-invalid @enderror" id="provinsi" name="provinsi" placeholder="Contoh: Kalimantan Barat">
+                                <input type="text" class="form-control @error('provinsi') is-invalid @enderror"
+                                    id="provinsi" name="provinsi" placeholder="Contoh: Kalimantan Barat">
                                 @error('provinsi')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -28,15 +31,18 @@
                             </div>
                             <div class="form-group">
                                 <label for="instagram">Instagram:</label>
-                                <input type="text" class="form-control" id="instagram" name="instagram" placeholder="Masukkan Instagram Anda">
+                                <input type="text" class="form-control" id="instagram" name="instagram"
+                                    placeholder="Masukkan Instagram Anda">
                             </div>
                             <div class="form-group">
                                 <label for="facebook">Facebook:</label>
-                                <input type="text" class="form-control" id="facebook" name="facebook" placeholder="Masukkan Facebook Anda">
+                                <input type="text" class="form-control" id="facebook" name="facebook"
+                                    placeholder="Masukkan Facebook Anda">
                             </div>
                             <div class="form-group">
                                 <label for="tiktok">Tiktok:</label>
-                                <input type="text" class="form-control" id="tiktok" name="tiktok" placeholder="Masukkan Tiktok Anda">
+                                <input type="text" class="form-control" id="tiktok" name="tiktok"
+                                    placeholder="Masukkan Tiktok Anda">
                             </div>
                             <button type="submit" class="btn btn-primary">Simpan</button>
                         </form>
@@ -49,7 +55,8 @@
             <div class="text-center alert alert-success" role="alert">
                 Status Pembayaran <br> <strong> Sudah Divalidasi! </strong> <br>
                 <a class="btn btn-secondary btn-sm" href="https://chat.whatsapp.com/I6rVyHgbNzULLoymOiZFqq"><span
-                        class="fab fa-whatsapp text-success"></span> <strong>Klik Disini Untuk Bergabung Grup PMB</strong></a>
+                        class="fab fa-whatsapp text-success"></span> <strong>Klik Disini Untuk Bergabung Grup
+                        PMB</strong></a>
             </div>
         @elseif($data->metode_bayar != null && $data->valid_bayar == 3)
             <div class="text-center alert alert-danger" role="alert">
