@@ -8,8 +8,12 @@
                 </a>
                 <div class="footer-contact pt-3">
                     <p>Jl. Pertamina, KM 4 Sengkuang, <br> Sintang, Kalimantan Barat.</p>
-                    <p class="mt-3"><strong>Whatsapp:</strong> <span>+62 821-5596-4080</span></p>
-                    <p><strong>Email:</strong> <span>persada@persadakhatulistiwa.ac.id</span></p>
+                    <p class="mt-3"><strong>Whatsapp:</strong> <a
+                            href="https://api.whatsapp.com/send?phone=6282155964080&text=Halo%20admin%20STKIP"
+                            target="_blank"><span>+62 821-5596-4080</span></a></p>
+                    <p><strong>Email:</strong> <a
+                            href="mailto:persada@persadakhatulistiwa.ac.id"><span>persada@persadakhatulistiwa.ac.id</span></a>
+                    </p>
                 </div>
                 <div class="social-links d-flex mt-4">
                     {{-- <a href=""><i class="bi bi-twitter-x"></i></a> --}}
