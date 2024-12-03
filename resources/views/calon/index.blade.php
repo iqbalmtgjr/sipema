@@ -1,5 +1,13 @@
 @extends('layouts.master')
 @section('content')
+    <div class="alert alert-info d-flex align-items-center" role="alert">
+        <i class="fas fa-info-circle me-2"></i>&nbsp;&nbsp;&nbsp;
+        <div>
+            <strong>Info:</strong>
+            Tanda bintang merah <span class="text-danger">*</span> pada formulir, berarti wajib di isi.
+        </div>
+    </div>
+
     <div class="card">
         <div class="card-header">
             <h6 class="text-primary">Identitas</h6>
@@ -252,24 +260,26 @@
                                     <select name="jenis_tiggal_siswa"
                                         class="form-control @error('jenis_tiggal_siswa') is-invalid @enderror">
                                         <option value="">-- Pilih Jenis Tinggal --</option>
-                                        <option value="ortu"{{ $data->jenis_tiggal_siswa == 'ortu' ? 'selected' : '' }}>
+                                        <option
+                                            value="ortu"{{ old('jenis_tiggal_siswa', $data->jenis_tiggal_siswa) == 'ortu' ? 'selected' : '' }}>
                                             Bersama orang tua</option>
                                         <option
-                                            value="kontrakan"{{ $data->jenis_tiggal_siswa == 'kontrakan' ? 'selected' : '' }}>
+                                            value="kontrakan"{{ old('jenis_tiggal_siswa', $data->jenis_tiggal_siswa) == 'kontrakan' ? 'selected' : '' }}>
                                             Kontrakan/Kost</option>
                                         <option
-                                            value="rumah sendiri"{{ $data->jenis_tiggal_siswa == 'rumah sendiri' ? 'selected' : '' }}>
+                                            value="rumah sendiri"{{ old('jenis_tiggal_siswa', $data->jenis_tiggal_siswa) == 'rumah sendiri' ? 'selected' : '' }}>
                                             Rumah Keluarga</option>
                                         <option
-                                            value="asrama"{{ $data->jenis_tiggal_siswa == 'asrama' ? 'selected' : '' }}>
+                                            value="asrama"{{ old('jenis_tiggal_siswa', $data->jenis_tiggal_siswa) == 'asrama' ? 'selected' : '' }}>
                                             Asrama</option>
                                         <option
-                                            value="panti asuhan"{{ $data->jenis_tiggal_siswa == 'panti asuhan' ? 'selected' : '' }}>
+                                            value="panti asuhan"{{ old('jenis_tiggal_siswa', $data->jenis_tiggal_siswa) == 'panti asuhan' ? 'selected' : '' }}>
                                             Panti Asuhan</option>
-                                        <option value="wali"{{ $data->jenis_tiggal_siswa == 'wali' ? 'selected' : '' }}>
+                                        <option
+                                            value="wali"{{ old('jenis_tiggal_siswa', $data->jenis_tiggal_siswa) == 'wali' ? 'selected' : '' }}>
                                             Wali</option>
                                         <option
-                                            value="lainnya"{{ $data->jenis_tiggal_siswa == 'lainnya' ? 'selected' : '' }}>
+                                            value="lainnya"{{ old('jenis_tiggal_siswa', $data->jenis_tiggal_siswa) == 'lainnya' ? 'selected' : '' }}>
                                             Lainnya</option>
                                     </select>
                                     @error('jenis_tiggal_siswa')
@@ -291,16 +301,16 @@
                                             class="form-control @error('transpot_siswa') is-invalid @enderror">
                                             <option value="">-- Pilih Jenis Transfortasi --</option>
                                             <option
-                                                value="jalan kaki"{{ $data->transpot_siswa == 'jalan kaki' ? 'selected' : '' }}>
+                                                value="jalan kaki"{{ old('transpot_siswa', $data->transpot_siswa) == 'jalan kaki' ? 'selected' : '' }}>
                                                 Jalan Kaki</option>
                                             <option
-                                                value="sepeda motor"{{ $data->transpot_siswa == 'sepeda motor' ? 'selected' : '' }}>
+                                                value="sepeda motor"{{ old('transpot_siswa', $data->transpot_siswa) == 'sepeda motor' ? 'selected' : '' }}>
                                                 Sepeda Motor</option>
                                             <option
-                                                value="angkutan umum"{{ $data->transpot_siswa == 'angkutan umum' ? 'selected' : '' }}>
+                                                value="angkutan umum"{{ old('transpot_siswa', $data->transpot_siswa) == 'angkutan umum' ? 'selected' : '' }}>
                                                 Angkutan Umum</option>
                                             <option
-                                                value="lainnya"{{ $data->transpot_siswa == 'lainnya' ? 'selected' : '' }}>
+                                                value="lainnya"{{ old('transpot_siswa', $data->transpot_siswa) == 'lainnya' ? 'selected' : '' }}>
                                                 Lainnya</option>
                                         </select>
                                         @error('transpot_siswa')

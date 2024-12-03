@@ -38,8 +38,6 @@ class InfopmbController extends Controller
         if ($data == false) {
             Pmbinfo::create([
                 'info_siswa_akun' => auth()->user()->pengenal_akun,
-                'nama_informan' => $request->nama_informan,
-                'no_hp' => $request->no_hp,
                 'media_info' => $request->media_info,
             ]);
         } else {

@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/infoPmb') }}">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('/info') }}">
         <div class="sidebar-brand-icon">
             {{-- <i class="fas fa-laugh-wink"></i> --}}
             <img style="width: 40px" src="{{ asset('assets/img/stkip.png') }}" alt="">
@@ -39,11 +39,11 @@
     </li>
 
     @if (auth()->user()->jalur == 'test')
-    <li class="nav-item {{ request()->is('infoTes') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ url('infoTes') }}">
-            <i class="fas fa-tasks"></i>
-            <span>Informasi Tes PMB</span></a>
-    </li>
+        <li class="nav-item {{ request()->is('infoTes') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ url('infoTes') }}">
+                <i class="fas fa-tasks"></i>
+                <span>Informasi Tes PMB</span></a>
+        </li>
     @endif
 
     <hr class="sidebar-divider">

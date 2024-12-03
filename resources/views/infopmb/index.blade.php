@@ -1,6 +1,13 @@
 @extends('layouts.master')
 @section('content')
     {{-- <h1 class="h3 mb-4 text-gray-800">Formulir Pendidikan</h1> --}}
+    <div class="alert alert-info d-flex align-items-center" role="alert">
+        <i class="fas fa-info-circle me-2"></i>&nbsp;&nbsp;&nbsp;
+        <div>
+            <strong>Info:</strong>
+            Tanda bintang merah <span class="text-danger">*</span> pada formulir, berarti wajib di isi.
+        </div>
+    </div>
     <div class="card">
         <div class="card-header">
             <h6 class="text-primary">Perolehan Informasi PMB STKIP Persada Khatulistiwa Sintang</h6>
@@ -8,7 +15,7 @@
         <div class="card-body">
             <form action="postInfopmb" method="post">
                 @csrf
-                <div class="form-group row">
+                {{-- <div class="form-group row">
                     <label for="namainforman" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control  @error('nama_informan') is-invalid @enderror"
@@ -23,7 +30,6 @@
                 </div>
                 <div class="form-group row">
                     <label for="nohp" class="col-sm-2 col-form-label">No HP</label>
-                    {{-- <div class="col-sm-10"> --}}
                     <div class="col-sm-10 input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon1">+62</span>
@@ -31,20 +37,18 @@
                         <input type="number" class="form-control @error('no_hp') is-invalid @enderror" id="inputNOHP"
                             name="no_hp" placeholder="8xxxxxxxxx"
                             value="{{ $data == true && $data->no_hp != null ? $data->no_hp : old('no_hp') }}">
-                    @error('no_hp')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                        @error('no_hp')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
                     </div>
-                    {{-- </div> --}}
-                </div>
+                </div> --}}
                 <div class="form-group row">
                     <label for="nohp" class="col-sm-2 col-form-label">Media Informasi<strong
                             style="color: red">*</strong></label>
                     <div class="col-sm-10">
-                        <select name="media_info"
-                            class="form-control @error('media_info') is-invalid @enderror">
+                        <select name="media_info" class="form-control @error('media_info') is-invalid @enderror">
                             <option value="">-- Pilih Media Informasi --</option>
                             <option value="brosur"
                                 @if ($data == true && $data->media_info != null) {{ $data->media_info == 'brosur' ? 'selected' : '' }} @else {{ old('media_info') == 'brosur' ? 'selected' : '' }} @endif>
@@ -81,6 +85,27 @@
                                 @if ($data == true && $data->media_info != null) {{ $data->media_info == 'whatsapp' ? 'selected' : '' }} @else {{ old('media_info') == 'whatsapp' ? 'selected' : '' }} @endif>
                                 Whatsapp
                             </option>
+                            <option value="plp_kkm"
+                                @if ($data == true && $data->media_info != null) {{ $data->media_info == 'plp_kkm' ? 'selected' : '' }} @else {{ old('media_info') == 'plp_kkm' ? 'selected' : '' }} @endif>
+                                PLP dan KKM
+                            </option>
+                            <option value="dosen"
+                                @if ($data == true && $data->media_info != null) {{ $data->media_info == 'dosen' ? 'selected' : '' }} @else {{ old('media_info') == 'dosen' ? 'selected' : '' }} @endif>
+                                Dosen
+                            </option>
+                            <option value="staff"
+                                @if ($data == true && $data->media_info != null) {{ $data->media_info == 'staff' ? 'selected' : '' }} @else {{ old('media_info') == 'staff' ? 'selected' : '' }} @endif>
+                                Staff
+                            </option>
+                            <option value="mahasiswa"
+                                @if ($data == true && $data->media_info != null) {{ $data->media_info == 'mahasiswa' ? 'selected' : '' }} @else {{ old('media_info') == 'mahasiswa' ? 'selected' : '' }} @endif>
+                                Mahasiswa
+                            </option>
+                            <option value="alumni"
+                                @if ($data == true && $data->media_info != null) {{ $data->media_info == 'alumni' ? 'selected' : '' }} @else {{ old('media_info') == 'alumni' ? 'selected' : '' }} @endif>
+                                Alumni
+                            </option>
+
                         </select>
                         @error('media_info')
                             <span class="invalid-feedback" role="alert">

@@ -33,7 +33,7 @@ class PendidikanController extends Controller
         $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
         if ($cekjalur->jalur == 'test') {
             $validator = Validator::make($request->all(), [
-                'jenis_sekolah' => 'required',
+                // 'jenis_sekolah' => 'required',
                 'nama_sekolah' => 'required',
                 'jurusan_sekolah' => 'required|max:100',
                 'tahun_lulus_sekolah' => 'required|max:4',
@@ -41,7 +41,7 @@ class PendidikanController extends Controller
             ]);
         } else {
             $validator = Validator::make($request->all(), [
-                'jenis_sekolah' => 'required',
+                // 'jenis_sekolah' => 'required',
                 'nama_sekolah' => 'required',
                 'jurusan_sekolah' => 'required|max:100',
                 'tahun_lulus_sekolah' => 'required|max:4',
@@ -66,7 +66,7 @@ class PendidikanController extends Controller
             if ($sklh == false) {
                 Pmbsekolah::create([
                     'sekolah_id_siswa' => auth()->user()->pengenal_akun,
-                    'jenis_sekolah' => $request->jenis_sekolah,
+                    // 'jenis_sekolah' => $request->jenis_sekolah,
                     'data_sekolah_id' => $request->nama_sekolah,
                     'jurusan_sekolah' => $request->jurusan_sekolah,
                     'tahun_lulus_sekolah' => $request->tahun_lulus_sekolah,
@@ -75,7 +75,7 @@ class PendidikanController extends Controller
             } else {
                 $sklh->update([
                     'sekolah_id_siswa' => auth()->user()->pengenal_akun,
-                    'jenis_sekolah' => $request->jenis_sekolah,
+                    // 'jenis_sekolah' => $request->jenis_sekolah,
                     'data_sekolah_id' => $request->nama_sekolah,
                     'jurusan_sekolah' => $request->jurusan_sekolah,
                     'tahun_lulus_sekolah' => $request->tahun_lulus_sekolah,
@@ -86,7 +86,7 @@ class PendidikanController extends Controller
             if ($sklh == false) {
                 Pmbsekolah::create([
                     'sekolah_id_siswa' => auth()->user()->pengenal_akun,
-                    'jenis_sekolah' => $request->jenis_sekolah,
+                    // 'jenis_sekolah' => $request->jenis_sekolah,
                     'data_sekolah_id' => $request->nama_sekolah,
                     'jurusan_sekolah' => $request->jurusan_sekolah,
                     'tahun_lulus_sekolah' => $request->tahun_lulus_sekolah,
@@ -99,7 +99,7 @@ class PendidikanController extends Controller
             } else {
                 $sklh->update([
                     'sekolah_id_siswa' => auth()->user()->pengenal_akun,
-                    'jenis_sekolah' => $request->jenis_sekolah,
+                    // 'jenis_sekolah' => $request->jenis_sekolah,
                     'data_sekolah_id' => $request->nama_sekolah,
                     'jurusan_sekolah' => $request->jurusan_sekolah,
                     'tahun_lulus_sekolah' => $request->tahun_lulus_sekolah,

@@ -1,5 +1,12 @@
 @extends('layouts.master')
 @section('content')
+    <div class="alert alert-info d-flex align-items-center" role="alert">
+        <i class="fas fa-info-circle me-2"></i>&nbsp;&nbsp;&nbsp;
+        <div>
+            <strong>Info:</strong>
+            Tanda bintang merah <span class="text-danger">*</span> pada formulir, berarti wajib di isi.
+        </div>
+    </div>
     <form action="{{ url('postOrtu') }}" method="post">
         @csrf
         <div class="card">

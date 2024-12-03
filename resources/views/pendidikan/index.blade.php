@@ -4,6 +4,13 @@
 @endpush
 @section('content')
     {{-- <h1 class="h3 mb-4 text-gray-800">Formulir Pendidikan</h1> --}}
+    <div class="alert alert-info d-flex align-items-center" role="alert">
+        <i class="fas fa-info-circle me-2"></i>&nbsp;&nbsp;&nbsp;
+        <div>
+            <strong>Info:</strong>
+            Tanda bintang merah <span class="text-danger">*</span> pada formulir, berarti wajib di isi.
+        </div>
+    </div>
     <div class="card">
         <div class="card-header">
             <h6 class="text-primary">Pendidikan Tertinggi Sebelumnya</h6>
@@ -11,36 +18,6 @@
         <div class="card-body">
             <form action="{{ url('postPendidikan') }}" method="post">
                 @csrf
-                <div class="form-group row">
-                    <label for="jenis_sekolah" class="col-sm-2 col-form-label">Asal Sekolah<strong
-                            style="color: red">*</strong></label>
-                    <div class="col-sm-10">
-                        <select id="jenis_sekolah" name="jenis_sekolah"
-                            class="form-control  @error('jenis_sekolah') is-invalid @enderror">
-                            <option value="">-- Pilih Asal Sekolah --</option>
-                            <option value="sma"
-                                @if ($data == true && $data->jenis_sekolah != null) {{ $data->jenis_sekolah == 'sma' ? 'selected' : '' }} @else {{ old('jenis_sekolah') == 'sma' ? 'selected' : '' }} @endif>
-                                SMA</option>
-                            <option value="smk"
-                                @if ($data == true && $data->jenis_sekolah != null) {{ $data->jenis_sekolah == 'smk' ? 'selected' : '' }} @else {{ old('jenis_sekolah') == 'smk' ? 'selected' : '' }} @endif>
-                                SMK
-                            </option>
-                            <option value="ma"
-                                @if ($data == true && $data->jenis_sekolah != null) {{ $data->jenis_sekolah == 'ma' ? 'selected' : '' }} @else {{ old('jenis_sekolah') == 'ma' ? 'selected' : '' }} @endif>
-                                Madrasah Aliyah
-                            </option>
-                            <option value="mak"
-                                @if ($data == true && $data->jenis_sekolah != null) {{ $data->jenis_sekolah == 'mak' ? 'selected' : '' }} @else {{ old('jenis_sekolah') == 'mak' ? 'selected' : '' }} @endif>
-                                Madrasah Aliyah Kejuruan
-                            </option>
-                        </select>
-                        @error('jenis_sekolah')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                </div>
                 <div class="form-group row">
                     <label for="nama_sekolah" class="col-sm-2 col-form-label">Nama Sekolah<strong
                             style="color: red">*</strong></label>
@@ -93,7 +70,7 @@
                     <label for="alamat" class="col-sm-2 col-form-label">Nomor IJAZAH</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control  @error('ijasah_sekolah') is-invalid @enderror"
-                            id="alamat" name="ijasah_sekolah" placeholder="Nomor Ijazah Sekolah (Wajib Diisi)"
+                            id="alamat" name="ijasah_sekolah" placeholder="Nomor Ijazah Sekolah (Boleh Menyusul)"
                             value="{{ $data == true && $data->ijasah_sekolah != null ? $data->ijasah_sekolah : old('ijasah_sekolah') }}">
                         @error('ijasah_sekolah')
                             <span class="invalid-feedback" role="alert">
@@ -252,7 +229,7 @@
             $(document).ready(function() {
                 $('.select2').select2();
             });
-            
+
             $(function() {
                 $.ajaxSetup({
                     headers: {

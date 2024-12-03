@@ -62,7 +62,7 @@ class InfoController extends Controller
         $params = array(
             'transaction_details' => array(
                 'order_id' => rand(),
-                'gross_amount' => $cekjalur->jalur == "prestasi" ? '200000' : '250000',
+                'gross_amount' => $cekjalur->jalur == "prestasi" ? '250000' : '300000',
             ),
             'customer_details' => array(
                 'first_name' => $data->nama_siswa,
