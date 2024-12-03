@@ -97,7 +97,26 @@ class AuthController extends Controller
 
         \Mail::to($request->email_akun_siswa)->send(new SendAkun($akun));
 
-        toastr()->success('Akun berhasil dibuat! Cek email anda untuk melihat password yang digunakan.', 'Selamat');
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.fonnte.com/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array('target' => '62.' . $request->hp_siswa . '|a', 'message' => 'Halo ' . $request->nama_siswa . ', akun anda telah dibuat. Password akun anda adalah ' . $rand_password . ' silahkan login melalui web https://daftar.persadakhatulistiwa.ac.id/login. Terima kasih'),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: nPoQNQMzhDVb6SHsvXcR'
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        toastr()->success('Akun berhasil dibuat! Cek email atau whatsapp anda untuk melihat password yang digunakan.', 'Selamat');
         return redirect('/login')->with('sukses', 'Cek email anda untuk melihat password');
     }
 

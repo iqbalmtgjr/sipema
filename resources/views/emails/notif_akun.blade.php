@@ -12,10 +12,10 @@
 
     <h3>Hai {{ $akun->nama_siswa }}, terima kasih telah mendaftar sebagai mahasiswa baru di STKIP Persada Khatulistiwa
         Sintang.</h3>
-    <p>
+    {{-- <p>
         Dibawah ini merupakan informasi pendaftaran sekaligus password yang digunakan untuk login ke website Sistem
         Informasi Pendaftaran Mahasiswa (SIPEMA).
-    </p>
+    </p> --}}
     <table>
         <tbody>
             <tr>
@@ -47,7 +47,9 @@
         </tbody>
     </table>
     <p>
-        Untuk Login Silahkan kunjungi website <i><a href="https://daftar.persadakhatulistiwa.ac.id/login">https://daftar.persadakhatulistiwa.ac.id/login</a></i>. <br><br>
+        Untuk Login Silahkan kunjungi website <i><a
+                href="https://daftar.persadakhatulistiwa.ac.id/login">https://daftar.persadakhatulistiwa.ac.id/login</a></i>.
+        <br><br>
 
         Terima Kasih, <br>
         Panitia PMB

@@ -82,6 +82,9 @@
                                         <input type="number"
                                             class="form-control @error('hp_siswa') is-invalid @enderror" id="inputNOHP"
                                             name="hp_siswa" placeholder="8xxxxxxxxxx" value="{{ old('hp_siswa') }}">
+                                        <small class="form-text text-muted">Masukkan nomor HP/Whatsapp yang benar dan
+                                            aktif,
+                                            tanpa menggunakan angka "0" di depan. Contoh: 81234567890</small>
                                         @error('hp_siswa')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

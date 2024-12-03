@@ -100,7 +100,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="{{ url('/') }}">Belum punya akun? Buat Akun
+                                        <a class="small" href="{{ url('/register') }}">Belum punya akun? Buat Akun
                                             Sekarang!</a>
                                     </div>
                                 </div>
