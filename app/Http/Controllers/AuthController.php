@@ -63,6 +63,12 @@ class AuthController extends Controller
 
         $gelombang = Gelombang::find(1)->gel;
 
+        $nohp = preg_replace('/^0/', '', $request->hp_siswa);
+        // dd($nohp);
+        // if (!preg_match('/^[0-9]+$/', $nohp)) {
+        //     return redirect()->back()->withInput()->withErrors(['hp_siswa' => 'Nomor telepon tidak valid']);
+        // }
+
         Pmbakun::create([
             'pengenal_akun' => $rand_akun,
             'email_akun_siswa' => $request->email_akun_siswa,
@@ -79,7 +85,7 @@ class AuthController extends Controller
             'ref' => $rand_ref,
             'nis_siswa' => $request->nis_siswa,
             'nama_siswa' => $request->nama_siswa,
-            'hp_siswa' => $request->hp_siswa,
+            'hp_siswa' => $nohp,
             'valid_bayar' => ""
         ]);
 
@@ -108,7 +114,7 @@ class AuthController extends Controller
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('target' => '62.' . $request->hp_siswa . '|a', 'message' => 'Halo ' . $request->nama_siswa . ', akun anda telah dibuat. Password akun anda adalah ' . $rand_password . ' silahkan login melalui web https://daftar.persadakhatulistiwa.ac.id/login. Terima kasih'),
+            CURLOPT_POSTFIELDS => array('target' => '62.' . $nohp . '|a', 'message' => 'Halo ' . $request->nama_siswa . ', akun anda telah dibuat. Password akun anda adalah ' . $rand_password . ' silahkan login melalui web https://daftar.persadakhatulistiwa.ac.id/login. Terima kasih'),
             CURLOPT_HTTPHEADER => array(
                 'Authorization: nPoQNQMzhDVb6SHsvXcR'
             ),

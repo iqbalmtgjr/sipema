@@ -71,25 +71,23 @@
                                     @enderror
                                 </div>
                                 <div class="form-group">
-                                    {{-- <input name="hp_siswa" type="number"
-                                        class="form-control form-control-user @error('hp_siswa') is-invalid @enderror"
-                                        placeholder="Nomor HP Aktif" value="{{ old('hp_siswa') }}"> --}}
-
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text" id="basic-addon1">+62</span>
+                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">+62</span>
+                                            </div>
+                                            <input type="number"
+                                                class="form-control @error('hp_siswa') is-invalid @enderror"
+                                                id="inputNOHP" name="hp_siswa" placeholder="8xxxxxxxxxx"
+                                                value="{{ old('hp_siswa') }}">
+                                            @error('hp_siswa')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
                                         </div>
-                                        <input type="number"
-                                            class="form-control @error('hp_siswa') is-invalid @enderror" id="inputNOHP"
-                                            name="hp_siswa" placeholder="8xxxxxxxxxx" value="{{ old('hp_siswa') }}">
                                         <small class="form-text text-muted">Masukkan nomor HP/Whatsapp yang benar dan
-                                            aktif,
-                                            tanpa menggunakan angka "0" di depan. Contoh: 81234567890</small>
-                                        @error('hp_siswa')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+                                            aktif. Contoh: 81234567890</small>
                                     </div>
                                     @error('hp_siswa')
                                         <span class="invalid-feedback" role="alert">
