@@ -250,9 +250,6 @@
                                         <li>Surat Keterangan Kelakuan Baik/SKKB (Dari Sekolah)</li>
                                         <li>Kartu Keluarga (KK)</li>
                                         <li>Akta Kelahiran</li>
-                                        <li>Nilai Rapor Semester 1 s/d 4 (Prestasi Akademik)</li>
-                                        <li>Sertifikat/Piagam (Prestasi Non Akademik)</li>
-                                        <li>Bukti Pembayaran Ujian</li>
                                     </ol>
                                 </td>
                             </tr>
