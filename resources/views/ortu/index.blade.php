@@ -7,7 +7,32 @@
             Tanda bintang merah <span class="text-danger">*</span> pada formulir, berarti wajib di isi.
         </div>
     </div>
-    <form action="{{ url('postOrtu') }}" method="post">
+    <div class="card">
+        <div class="card-header">
+            <h6 class="text-primary">Pilih Informasi yang ingin di Isi</h6>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="form-group row">
+                <label for="inputPilih" class="col-sm-2 col-form-label">Pilih</label>
+                <div class="col-sm-10">
+                    <select class="form-control" id="inputPilih" onchange="pilihOrtuWali(this.value)">
+                        <option value="ortu" {{ $pilih == 'ortu' ? 'selected' : '' }}>Isi Informasi Orang Tua</option>
+                        <option value="wali" {{ $pilih == 'wali' ? 'selected' : '' }}>Isi Informasi Wali</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function pilihOrtuWali(pilih) {
+            window.location.href = "{{ url('pilihOrtuWali') }}/" + pilih;
+        }
+    </script>
+    <hr>
+
+    {{-- <form action="{{ url('postOrtu') }}" method="post">
         @csrf
         <div class="card">
             <div class="card-header">
@@ -120,8 +145,8 @@
                     <label for="pekerjaan" class="col-sm-2 col-form-label">Pendidikan Terakhir<strong
                             style="color: red">*</strong></label>
                     <div class="col-sm-10">
-                        <select class="form-control @error('pendidikan_ayah') is-invalid @enderror" name="pendidikan_ayah"
-                            id="">
+                        <select class="form-control @error('pendidikan_ayah') is-invalid @enderror"
+                            name="pendidikan_ayah" id="">
                             <option value="">-- Pilih Pendidikan Terakhir Ayah --</option>
                             <option value="SD"
                                 @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'SD' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'SD' ? 'selected' : '' }} @endif>
@@ -408,12 +433,7 @@
                     </div>
                 </div>
             </div>
-
-            <!-- /.card-body -->
-            {{-- <div class="card-footer"> --}}
-            {{-- </div> --}}
-            <!-- /.card-footer -->
         </div>
         <button type="submit" class="btn btn-primary float-right mt-3 mb-3">Simpan dan Lanjutkan</button>
-    </form>
+    </form> --}}
 @endsection

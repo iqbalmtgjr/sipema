@@ -141,7 +141,8 @@
                                         <strong>Jalur Prestasi</strong>
                                         <p>
                                             <strong>Pendaftaran:</strong> {{ $jadwal_gel2->daftar_buka }} <br>
-                                            <strong>Pengumuman Hasil:</strong> {{ $jadwal_gel2->pres_mum1 }} <br>
+                                            <strong>Pengumuman Tahap 1:</strong> {{ $jadwal_gel2->pres_mum1 }} <br>
+                                            <strong>Pengumuman Tahap 2:</strong> {{ $jadwal_gel2->pres_mum2 }} <br>
                                             <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel2->regi }}
                                         </p> <br>
                                         <strong>Jalur Reguler 2</strong>
@@ -177,7 +178,8 @@
                                         <strong>Jalur Prestasi</strong>
                                         <p>
                                             <strong>Pendaftaran:</strong> {{ $jadwal_gel3->daftar_buka }} <br>
-                                            <strong>Pengumuman Hasil:</strong> {{ $jadwal_gel3->pres_mum1 }} <br>
+                                            <strong>Pengumuman Tahap 1:</strong> {{ $jadwal_gel3->pres_mum1 }} <br>
+                                            <strong>Pengumuman Tahap 2:</strong> {{ $jadwal_gel3->pres_mum2 }} <br>
                                             <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel3->regi }}
                                         </p> <br>
                                         <strong>Jalur Reguler 2</strong>
@@ -308,7 +310,7 @@
                 <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
                     <i class="fas fa-flask"></i>
                     <div class="stats-item">
-                        <span data-purecounter-start="0" data-purecounter-end="1268" data-purecounter-duration="1"
+                        <span data-purecounter-start="0" data-purecounter-end="2785" data-purecounter-duration="1"
                             class="purecounter"></span>
                         <p>Lulusan</p>
                     </div>

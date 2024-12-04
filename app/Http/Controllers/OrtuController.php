@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pmbinfo;
 use App\Models\Pmbortu;
 use App\Models\Pmbsiswa;
+use App\Models\Pmbsekolah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,6 +13,22 @@ class OrtuController extends Controller
 {
     public function index()
     {
+        $cek_calon = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+        if ($cek_calon->nik_siswa == null) {
+            toastr()->warning('Anda belum mengisi data calon siswa', 'Peringatan');
+            return redirect()->back();
+        }
+        $cek_pendidikan = Pmbsekolah::where('sekolah_id_siswa', auth()->user()->pengenal_akun)->first();
+        if (!$cek_pendidikan) {
+            toastr()->warning('Anda belum mengisi data pendidikan', 'Peringatan');
+            return redirect()->back();
+        }
+        $cek_infopmb = Pmbinfo::where('info_siswa_akun', auth()->user()->pengenal_akun)->first();
+        if (!$cek_infopmb) {
+            toastr()->warning('Anda belum mengisi data perolehan info pmb', 'Peringatan');
+            return redirect()->back();
+        }
+
         $data = Pmbortu::where('ortu_pengenal_siswa', auth()->user()->pengenal_akun)->first();
         $cekvalid = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
         if ($cekvalid->valid_bayar != 2) {

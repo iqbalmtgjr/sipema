@@ -16,6 +16,12 @@ class PendidikanController extends Controller
 {
     public function index()
     {
+        $cek_calon = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+        if ($cek_calon->nik_siswa == null) {
+            toastr()->warning('Anda belum mengisi data calon siswa', 'Peringatan');
+            return redirect()->back();
+        }
+
         $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
         $data = Pmbsekolah::where('sekolah_id_siswa', auth()->user()->pengenal_akun)->first();
         $upload = Pmbupload::where('upload_id_siswa', auth()->user()->pengenal_akun)->first();

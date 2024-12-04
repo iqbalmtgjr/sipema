@@ -13,6 +13,8 @@
             <h6 class="text-primary">Perolehan Informasi PMB STKIP Persada Khatulistiwa Sintang</h6>
         </div>
         <div class="card-body">
+            <p>Silahkan pilih media informasi dibawah ini, dari mana anda menemukan informasi PMB STKIP Persada Khatulistiwa
+                Sintang</p>
             <form action="postInfopmb" method="post">
                 @csrf
                 {{-- <div class="form-group row">

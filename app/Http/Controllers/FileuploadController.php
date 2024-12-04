@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pmbinfo;
+use App\Models\Pmbortu;
 use App\Models\Pmbprodi;
 use App\Models\Pmbsiswa;
 use App\Models\Pmbupload;
+use App\Models\Pmbsekolah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,6 +15,27 @@ class FileuploadController extends Controller
 {
     public function index()
     {
+        $cek_calon = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+        if ($cek_calon->nik_siswa == null) {
+            toastr()->warning('Anda belum mengisi data calon siswa', 'Peringatan');
+            return redirect()->back();
+        }
+        $cek_pendidikan = Pmbsekolah::where('sekolah_id_siswa', auth()->user()->pengenal_akun)->first();
+        if ($cek_pendidikan == false) {
+            toastr()->warning('Anda belum mengisi data pendidikan', 'Peringatan');
+            return redirect()->back();
+        }
+        $cek_infopmb = Pmbinfo::where('info_siswa_akun', auth()->user()->pengenal_akun)->first();
+        if (!$cek_infopmb) {
+            toastr()->warning('Anda belum mengisi data perolehan info pmb', 'Peringatan');
+            return redirect()->back();
+        }
+        $cek_ortu = Pmbortu::where('ortu_pengenal_siswa', auth()->user()->pengenal_akun)->first();
+        if ($cek_ortu == false) {
+            toastr()->warning('Anda belum mengisi data orang tua atau wali', 'Peringatan');
+            return redirect()->back();
+        }
+
         $jalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
         $gam = Pmbupload::where('upload_id_siswa', auth()->user()->pengenal_akun)->first();
         $cekvalid = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
