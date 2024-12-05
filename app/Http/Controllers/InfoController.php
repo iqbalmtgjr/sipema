@@ -103,6 +103,15 @@ class InfoController extends Controller
             ]
         );
 
+        if ($transaction_status == "settlement") {
+            toastr()->success('Pembayaran berhasil!', 'Selamat');
+        } elseif ($transaction_status == "expire") {
+            toastr()->error('Pembayaran kadaluarsa!', 'Gagal');
+        } elseif ($transaction_status == "cancel") {
+            toastr()->error('Pembayaran dibatalkan!', 'Gagal');
+        } elseif ($transaction_status == "pending") {
+            toastr()->error('Pembayaran sedang diproses!', 'Gagal');
+        }
         return redirect('pembayaran');
     }
 
