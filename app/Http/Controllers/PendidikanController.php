@@ -28,7 +28,7 @@ class PendidikanController extends Controller
         $cekvalid = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
         $datasekolah = Datasekolah::all();
         if ($cekvalid->valid_bayar != 2) {
-            toastr()->warning('Anda belum tervalidasi', 'Peringatan');
+            toastr()->warning('Anda belum melakukan pembayaran', 'Peringatan');
             return redirect()->back();
         }
         return view('pendidikan.index', compact('data', 'cekjalur', 'upload', 'datasekolah'));

@@ -114,13 +114,13 @@ class AuthController extends Controller
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
-            CURLOPT_POSTFIELDS => array('target' => '62.' . $nohp . '|a', 'message' => 'Halo ' . $request->nama_siswa . ', akun anda telah dibuat. Password akun anda adalah ' . $rand_password . ' silahkan login melalui web https://daftar.persadakhatulistiwa.ac.id/login. Terima kasih'),
+            CURLOPT_POSTFIELDS => array('target' => '62.' . $nohp . '|a', 'message' => 'Halo ' . $request->nama_siswa . ', akun anda telah dibuat. silahkan login melalui web https://daftar.persadakhatulistiwa.ac.id/login dengan email ' . $request->email_akun_siswa . ' dan password ' . $rand_password . ' Terima kasih'),
             CURLOPT_HTTPHEADER => array(
                 'Authorization: nPoQNQMzhDVb6SHsvXcR'
             ),
         ));
 
-        $response = curl_exec($curl);
+        curl_exec($curl);
 
         toastr()->success('Akun berhasil dibuat! Cek email atau whatsapp anda untuk melihat password yang digunakan.', 'Selamat');
         return redirect('/login')->with('sukses', 'Cek email anda untuk melihat password');

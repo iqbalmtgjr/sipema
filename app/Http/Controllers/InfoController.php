@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\Pmbpenerimaan;
 use App\Models\Biayakuliahpmb;
 use App\Models\Buktibayar;
+use App\Models\Midtrans;
 use App\Models\Pembayaranrinci;
 use App\Models\Pmbjadwal;
 use App\Models\Pmbprodi;
@@ -59,10 +60,11 @@ class InfoController extends Controller
         $cekbukti = Pmbupload::where('upload_id_siswa', auth()->user()->pengenal_akun)->first();
         $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
 
+        $order_id = rand();
         $params = array(
             'transaction_details' => array(
-                'order_id' => rand(),
-                'gross_amount' => $cekjalur->jalur == "prestasi" ? '250000' : '300000',
+                'order_id' => $order_id,
+                'gross_amount' => 300000,
             ),
             'customer_details' => array(
                 'first_name' => $data->nama_siswa,
@@ -71,20 +73,35 @@ class InfoController extends Controller
             ),
         );
 
+
+
         $snapToken = Snap::getSnapToken($params);
         return view('info.pembayaran', compact('cekputus', 'data', 'biaya', 'cekbukti', 'cekjalur', 'snapToken'));
     }
 
-    public function valid()
+    public function valid($order_id, $gross_amount, $transaction_status)
     {
+        // dd($id);
         // $serverKey = config('midtrans.server_key');
         // $hashed = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
         // if ($hashed == $request->signature_key) {
-        //     if ($request->transaction_status == "capture") {
-        $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
-        $data->update(['valid_bayar' => 2]);
+        // if ($transaction_status == "capture") {
+        if ($transaction_status == "settlement") {
+            $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+            $data->update(['valid_bayar' => 2]);
+        }
         // }
-        // }
+
+        Midtrans::updateOrCreate(
+            ['order_id' => $order_id],
+            [
+                'akun_siswa' => auth()->user()->pengenal_akun,
+                'email' => auth()->user()->email_akun_siswa,
+                'jmlh_pembayaran' => $gross_amount,
+                'transaction_status' => $transaction_status,
+                'tgl_transaksi' => now(),
+            ]
+        );
 
         return redirect('pembayaran');
     }

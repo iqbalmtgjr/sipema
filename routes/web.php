@@ -51,7 +51,7 @@ Route::group(['middleware' => ['isLogin', 'custom.user']], function () {
     Route::get('infoTes', [InfoController::class, 'infoTes']);
 
     //pembayaran
-    Route::get('/after-payment', [InfoController::class, 'valid']);
+    Route::get('afterpay/{order_id}/{gross_amount}/{transaction_status}', [InfoController::class, 'valid'])->name('afterpay');
 
     // Konfirmasi Bayar AKhir
     Route::get('pembayaran/konfirmasi', [InfoController::class, 'konfirmasi']);

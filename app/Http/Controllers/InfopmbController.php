@@ -26,7 +26,7 @@ class InfopmbController extends Controller
         $data = Pmbinfo::where('info_siswa_akun', auth()->user()->pengenal_akun)->first();
         $cekvalid = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
         if ($cekvalid->valid_bayar != 2) {
-            toastr()->warning('Anda belum tervalidasi', 'Peringatan');
+            toastr()->warning('Anda belum melakukan pembayaran', 'Peringatan');
             return redirect()->back();
         }
         return view('infopmb.index', compact('data', 'cekvalid'));
