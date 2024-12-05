@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pmbinfo;
 use App\Models\Pmbortu;
+use App\Models\Pmbwali;
 use App\Models\Pmbsiswa;
 use App\Models\Pmbsekolah;
 use Illuminate\Http\Request;
@@ -100,6 +101,52 @@ class OrtuController extends Controller
                 'penghasilan_ibu' => $request->penghasilan_ibu,
             ]);
         }
+
+        toastr()->success('Data berhasil diinput!, Silahkan lanjutkan mengupload berkas yang diperlukan', 'Selamat');
+        return redirect('upload');
+    }
+
+    public function storeWali(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'nik_wali' => 'required',
+            'nama_wali' => 'required',
+            'tmp_lahir_wali' => 'required',
+            'tgl_lahir_wali' => 'required',
+            'alamat_wali' => 'required',
+            'pekerjaan_wali' => 'required',
+            'pendidikan_wali' => 'nullable',
+            'hp_wali' => 'required',
+            'npwp_wali' => 'nullable',
+            'penghasilan_wali' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            toastr()->error('Ada Kesalahan Saat Penginputan! Harap teliti saat pengisian data', 'Gagal');
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $data = Pmbwali::where('wali_pengenal_siswa', auth()->user()->pengenal_akun)->first();
+
+        // if ($data == true) {
+        //     $data->update($request->all());
+        // } else {
+        Pmbwali::create([
+            'wali_pengenal_siswa' => auth()->user()->pengenal_akun,
+            'nik_wali' => $request->nik_wali,
+            'nama_wali' => $request->nama_wali,
+            'tmp_lahir_wali' => $request->tmp_lahir_wali,
+            'tgl_lahir_wali' => $request->tgl_lahir_wali,
+            'alamat_wali' => $request->alamat_wali,
+            'kerja_wali' => $request->pekerjaan_wali,
+            'hp_wali' => $request->hp_wali,
+            'npwp_wali' => $request->npwp_wali,
+            'penghasil_wali' => $request->penghasilan_wali,
+        ]);
+        // }
 
         toastr()->success('Data berhasil diinput!, Silahkan lanjutkan mengupload berkas yang diperlukan', 'Selamat');
         return redirect('upload');

@@ -448,7 +448,7 @@
                             <tbody>
                                 <tr>
                                     <td>Prestasi</td>
-                                    <td>Rp 250.000</td>
+                                    <td>Rp 300.000</td>
                                 </tr>
                                 <tr>
                                     <td>Tes</td>

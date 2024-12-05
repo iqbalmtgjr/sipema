@@ -31,7 +31,8 @@
                             <!--Tes tertulis PMB dilaksanakan secara online, dimulai pada tanggal 01 - 15 Agustus 2023. -->
                             <!--Tes Wawancara PMB dilaksanakan melalui telpon/WhatsApp.-->
                         </p>
-                        <p>Tes tertulis dilakukan melalui link <b>&nbsp; <a href="https://tespmb.persadakhatulistiwa.ac.id" target="_blank">https://tespmb.persadakhatulistiwa.ac.id</a></b>&nbsp;
+                        <p>Tes tertulis dilakukan melalui link <b>&nbsp; <a href="https://tespmb.persadakhatulistiwa.ac.id"
+                                    target="_blank">https://tespmb.persadakhatulistiwa.ac.id</a></b>&nbsp;
                         </p>
                         <p>Gunakan email dan password yang sama pada akun pmb untuk masuk ke sistem tes. Jika terjadi
                             kendala
@@ -44,9 +45,10 @@
                         </p>
                     </div>
                 @else
-                    <h5 class="text-danger mt-5">Silahkan menunggu sampai panitia memberikan info ujian dan akun yang
+                    <a href="#" class="btn btn-info btn-md">Klik disini untuk daftar akun tes pmb</a>
+                    {{-- <h5 class="text-danger mt-5">Silahkan menunggu sampai panitia memberikan info ujian dan akun yang
                         digunakan untuk
-                        ujian dihalaman ini.</h5>
+                        ujian dihalaman ini.</h5> --}}
                 @endif
             </div>
         @endif

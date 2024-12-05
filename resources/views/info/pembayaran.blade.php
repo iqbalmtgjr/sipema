@@ -184,7 +184,7 @@
                     let transaction_status = result.transaction_status;
                     window.location.href =
                         `{{ url('afterpay/${order_id}/${gross_amount}/${transaction_status}') }}`;
-                    alert('Pembayaran Berhasil!');
+                    // alert('Pembayaran Berhasil!');
                 },
 
                 onError: function(result) {
@@ -193,7 +193,7 @@
                     let transaction_status = result.transaction_status;
                     window.location.href =
                         `{{ url('afterpay/${order_id}/${gross_amount}/${transaction_status}') }}`;
-                    alert('Pembayaran Gagal!');
+                    // alert('Pembayaran Gagal!');
                 },
                 onPending: function(result) {
                     let order_id = result.order_id;
@@ -201,7 +201,14 @@
                     let transaction_status = result.transaction_status;
                     window.location.href =
                         `{{ url('afterpay/${order_id}/${gross_amount}/${transaction_status}') }}`;
-                    alert('Pembayaran Sedang Diproses!');
+                    // alert('Pembayaran Sedang Diproses!');
+                },
+                onClose: function() {
+                    let order_id = result.order_id;
+                    let gross_amount = result.gross_amount;
+                    let transaction_status = result.transaction_status;
+                    window.location.href =
+                        `{{ url('afterpay/${order_id}/${gross_amount}/${transaction_status}') }}`;
                 }
             });
         };

@@ -37,6 +37,7 @@ class InfoController extends Controller
         // dd($regis);
         return view('info.infopmb', compact('biaya', 'cekjalur', 'data', 'regis'));
     }
+
     public function infoMhs()
     {
         $data = Pmbakun::leftJoin('pmb_siswa', 'pmb_akun.pengenal_akun', '=', 'pmb_siswa.akun_siswa')
@@ -68,14 +69,13 @@ class InfoController extends Controller
             ),
             'customer_details' => array(
                 'first_name' => $data->nama_siswa,
-                'email' => $data->email_akun_siswa,
+                'email' => $data_akun->email_akun_siswa,
                 'phone' => $data->hp_siswa,
             ),
         );
 
-
-
         $snapToken = Snap::getSnapToken($params);
+
         return view('info.pembayaran', compact('cekputus', 'data', 'biaya', 'cekbukti', 'cekjalur', 'snapToken'));
     }
 
@@ -110,7 +110,7 @@ class InfoController extends Controller
         } elseif ($transaction_status == "cancel") {
             toastr()->error('Pembayaran dibatalkan!', 'Gagal');
         } elseif ($transaction_status == "pending") {
-            toastr()->error('Pembayaran sedang diproses!', 'Gagal');
+            toastr()->warning('Menunggu pembayaran anda!', 'Peringatan');
         }
         return redirect('pembayaran');
     }
@@ -182,6 +182,12 @@ class InfoController extends Controller
         $gelombang = Pmbakun::where('pengenal_akun', auth()->user()->pengenal_akun)->first()->gelombang;
         $data = Pmbjadwal::find($gelombang);
         $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
+
+        $cek_pembayaran = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+        if ($cek_pembayaran->valid_bayar != 2) {
+            toastr()->warning('Anda belum melakukan pembayaran', 'Peringatan');
+            return redirect()->back();
+        }
         return view('info.infotes', compact('data', 'cekjalur'));
     }
 

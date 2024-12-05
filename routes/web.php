@@ -4,14 +4,14 @@ use App\Mail\SendAkun;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\OrtuController;
 use App\Http\Controllers\CalonController;
+use App\Http\Controllers\PkkmbController;
 use App\Http\Controllers\InfopmbController;
 use App\Http\Controllers\FileuploadController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PendidikanController;
-use App\Http\Controllers\PkkmbController;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,9 +74,10 @@ Route::group(['middleware' => ['isLogin', 'custom.user']], function () {
     Route::get('info-pmb', [InfopmbController::class, 'index']);
     Route::post('postInfopmb', [InfopmbController::class, 'store']);
 
-    // Data Orang Tua Siswa
+    // Data Orang Tua Siswa atau Wali
     Route::get('ortu', [OrtuController::class, 'index']);
     Route::post('postOrtu', [OrtuController::class, 'store']);
+    Route::post('postWali', [OrtuController::class, 'storeWali']);
 
     // Data Upload Berkas
     Route::get('upload', [FileuploadController::class, 'index']);
