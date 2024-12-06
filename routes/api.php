@@ -20,4 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //pembayaran
-Route::get('/after-payment', [InfoController::class, 'valid']);
+Route::post('afterpay', [InfoController::class, 'valid'])->name('afterpay');

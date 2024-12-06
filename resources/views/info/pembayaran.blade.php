@@ -172,43 +172,65 @@
     @endif
 @endsection
 @push('footer')
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="{{ config('midtrans.client_key') }}"></script>
     <script>
         document.getElementById('pay-button').onclick = function() {
             snap.pay('{{ $snapToken }}', {
                 onSuccess: function(result) {
-                    let order_id = result.order_id;
-                    let gross_amount = result.gross_amount;
-                    let transaction_status = result.transaction_status;
-                    window.location.href =
-                        `{{ url('afterpay/${order_id}/${gross_amount}/${transaction_status}') }}`;
+                    // console.log(result.order_id)
+                    // console.log(result.status_code)
+                    // console.log(result.transaction_status)
+                    // console.log(result.gross_amount)
+                    // let order_id = result.order_id;
+                    // let gross_amount = result.gross_amount;
+                    // let transaction_status = result.transaction_status;
+                    // window.location.href =
+                    //     `{{ url('afterpay/${order_id}/${gross_amount}/${transaction_status}') }}`;
+                    // window.location.href = "{{ route('afterpay') }}";
+                    $.ajax({
+                        url: "{{ url('api/afterpay') }}", // URL API
+                        type: "POST", // HTTP Method
+                        dataType: "json", // Tipe data respons dari server
+                        contentType: "application/json", // Tipe konten data yang dikirim
+                        data: JSON.stringify({
+                            signature_key: result.signature_key,
+                            order_id: result.order_id,
+                            status_code: result.status_code,
+                            transaction_status: result.transaction_status,
+                            gross_amount: result.gross_amount,
+                            pengenal_akun: "{{ auth()->user()->pengenal_akun }}",
+                            email_siswa: "{{ auth()->user()->email_akun_siswa }}"
+                        }),
+                        success: function(data) {
+                            // console.log("Success:", data);
+                            window.location.href = "{{ url('pembayaran') }}";
+                            // alert("Pembayaran berhasil!");
+                            // Lakukan sesuatu setelah berhasil
+                        },
+                        error: function(xhr, status, error) {
+                            window.location.href = "{{ url('pembayaran') }}";
+                            // console.error("Error:", xhr.responseText || error);
+                            // alert("Terjadi kesalahan saat memproses pembayaran.");
+                        },
+                    });
+
+
                     // alert('Pembayaran Berhasil!');
                 },
 
                 onError: function(result) {
-                    let order_id = result.order_id;
-                    let gross_amount = result.gross_amount;
-                    let transaction_status = result.transaction_status;
-                    window.location.href =
-                        `{{ url('afterpay/${order_id}/${gross_amount}/${transaction_status}') }}`;
-                    // alert('Pembayaran Gagal!');
+                    alert('Pembayaran Gagal!');
+                    // window.location.href = "{{ url('api/afterpay') }}";
                 },
                 onPending: function(result) {
-                    let order_id = result.order_id;
-                    let gross_amount = result.gross_amount;
-                    let transaction_status = result.transaction_status;
-                    window.location.href =
-                        `{{ url('afterpay/${order_id}/${gross_amount}/${transaction_status}') }}`;
-                    // alert('Pembayaran Sedang Diproses!');
+                    alert('Pembayaran Sedang Diproses!');
+                    // window.location.href = "{{ url('api/afterpay') }}";
                 },
-                onClose: function() {
-                    let order_id = result.order_id;
-                    let gross_amount = result.gross_amount;
-                    let transaction_status = result.transaction_status;
-                    window.location.href =
-                        `{{ url('afterpay/${order_id}/${gross_amount}/${transaction_status}') }}`;
+                onClose: function(result) {
+                    alert('Pembayaran Ditutup!');
+                    // window.location.href = "{{ url('api/afterpay') }}";
                 }
             });
         };

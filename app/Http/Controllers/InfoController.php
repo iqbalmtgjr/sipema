@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use Midtrans\Snap;
+use Midtrans\Config;
 use App\Models\Pmbakun;
+use App\Models\Midtrans;
+use App\Models\Pmbprodi;
 use App\Models\Pmbsiswa;
+use App\Models\Pmbjadwal;
 use App\Models\Pmbupload;
+use App\Models\Buktibayar;
+use Midtrans\Notification;
 use Illuminate\Http\Request;
 use App\Models\Pmbpenerimaan;
 use App\Models\Biayakuliahpmb;
-use App\Models\Buktibayar;
-use App\Models\Midtrans;
 use App\Models\Pembayaranrinci;
-use App\Models\Pmbjadwal;
-use App\Models\Pmbprodi;
 use Illuminate\Support\Facades\Validator;
-use Midtrans\Config;
-use Midtrans\Snap;
 
 class InfoController extends Controller
 {
@@ -79,40 +80,27 @@ class InfoController extends Controller
         return view('info.pembayaran', compact('cekputus', 'data', 'biaya', 'cekbukti', 'cekjalur', 'snapToken'));
     }
 
-    public function valid($order_id, $gross_amount, $transaction_status)
+    public function valid(Request $request)
     {
-        // dd($id);
         // $serverKey = config('midtrans.server_key');
         // $hashed = hash('sha512', $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
         // if ($hashed == $request->signature_key) {
-        // if ($transaction_status == "capture") {
-        if ($transaction_status == "settlement") {
-            $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+        if ($request->transaction_status == "settlement") {
+            $data = Pmbsiswa::where('akun_siswa', $request->pengenal_akun)->first();
             $data->update(['valid_bayar' => 2]);
         }
         // }
 
-        Midtrans::updateOrCreate(
-            ['order_id' => $order_id],
+        $midtrans = Midtrans::updateOrCreate(
+            ['order_id' => $request->order_id],
             [
-                'akun_siswa' => auth()->user()->pengenal_akun,
-                'email' => auth()->user()->email_akun_siswa,
-                'jmlh_pembayaran' => $gross_amount,
-                'transaction_status' => $transaction_status,
+                'akun_siswa' => $request->pengenal_akun,
+                'email' => $request->email_siswa,
+                'jmlh_pembayaran' => $request->gross_amount,
+                'transaction_status' => $request->transaction_status,
                 'tgl_transaksi' => now(),
             ]
         );
-
-        if ($transaction_status == "settlement") {
-            toastr()->success('Pembayaran berhasil!', 'Selamat');
-        } elseif ($transaction_status == "expire") {
-            toastr()->error('Pembayaran kadaluarsa!', 'Gagal');
-        } elseif ($transaction_status == "cancel") {
-            toastr()->error('Pembayaran dibatalkan!', 'Gagal');
-        } elseif ($transaction_status == "pending") {
-            toastr()->warning('Menunggu pembayaran anda!', 'Peringatan');
-        }
-        return redirect('pembayaran');
     }
 
     public function postMetodeBayar(Request $request)
