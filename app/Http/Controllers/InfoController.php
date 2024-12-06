@@ -73,7 +73,23 @@ class InfoController extends Controller
                 'email' => $data_akun->email_akun_siswa,
                 'phone' => $data->hp_siswa,
             ),
+            'enabled_payments' => array(
+                'bca_va',
+                'permata_va',
+                'bni_va',
+                'bri_epay',
+                'bri_va',
+                'echannel',
+                'cimb_va',
+                'other_va',
+                'gopay',
+                'shopeepay',
+                'other_qris',
+                'indomaret',
+                'alfamart',
+            ),
         );
+
 
         $snapToken = Snap::getSnapToken($params);
 
