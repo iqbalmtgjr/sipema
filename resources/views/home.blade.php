@@ -9,7 +9,8 @@
 
             <div class="welcome position-relative" data-aos="fade-down" data-aos-delay="100">
                 <h2 class="text-light">Selamat Datang di <br> PMB Persada Khatulistiwa</h2>
-                {{-- <p>We are team of talented designers making websites with Bootstrap</p> --}}
+                <a href="/register" class="btn btn-primary btn-lg">Daftar Sekarang</a>
+                <a href="/login" class="btn btn-primary btn-lg">Masuk</a>
             </div><!-- End Welcome -->
 
             <div class="content row gy-4">
@@ -35,7 +36,7 @@
                     <div class="d-flex flex-column justify-content-center">
                         <div class="row gy-4">
 
-                            <div class="col-xl-4 d-flex align-items-stretch">
+                            <div class="col-xl-6 d-flex align-items-stretch">
                                 <div class="icon-box" data-aos="zoom-out" data-aos-delay="300">
                                     <i class="bi bi-trophy"></i>
                                     <h4>Jalur Prestasi</h4>
@@ -44,22 +45,22 @@
                                 </div>
                             </div><!-- End Icon Box -->
 
-                            <div class="col-xl-4 d-flex align-items-stretch">
+                            <div class="col-xl-6 d-flex align-items-stretch">
                                 <div class="icon-box" data-aos="zoom-out" data-aos-delay="400">
-                                    <i class="bi bi-gem"></i>
+                                    <i class="bi bi-pencil-square"></i>
                                     <h4>Jalur Tes</h4>
                                     <p>Pilih jalur tes untuk memanfaatkan kemampuan dan keterampilan Anda dalam
                                         mengikuti seleksi masuk.</p>
                                 </div>
                             </div><!-- End Icon Box -->
-                            <div class="col-xl-4 d-flex align-items-stretch">
+                            {{-- <div class="col-xl-4 d-flex align-items-stretch">
                                 <div class="icon-box" data-aos="zoom-out" data-aos-delay="500">
                                     <i class="bi bi-book"></i>
                                     <h4>Jalur Reguler 2</h4>
                                     <p>Reguler 2 adalah kelas karyawan yang diadakan di hari Jumat dan Sabtu. Pilih
                                         jalur ini untuk memanfaatkan waktu luang Anda menjadi lebih produktif.</p>
                                 </div>
-                            </div><!-- End Icon Box -->
+                            </div> --}}
 
                         </div>
                     </div>
@@ -68,7 +69,109 @@
 
         </div>
 
-    </section><!-- /Hero Section -->
+    </section><!-- End Hero Section -->
+
+
+    <style>
+        .icon-box:hover {
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+            padding: 1rem;
+        }
+    </style>
+
+    <section id="prodi" class="departments section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+            <h2>Program Studi</h2>
+            <p>STKIP Persada Khatulistiwa memiliki 9 program studi yang terdiri dari Pendidikan Guru Sekolah Dasar
+                (PGSD), Pendidikan Bahasa dan Sastra Indonesia (PBSI), Biologi, Komputer, Ekonomi, Pendidikan Pancasila
+                dan Kewarganegaraan (PPKN), Pendidikan Bahasa Inggris (PBI), Matematika, dan Pendidikan Anak Usia Dini
+                (PGPAUD).</p>
+        </div>
+
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box">
+                        <i class="bi bi-book"></i>
+                        <h4>PGSD</h4>
+                        <p>Program Studi Pendidikan Guru Sekolah Dasar (PGSD) di STKIP Persada Khatulistiwa
+                            berfokus pada pengembangan kemampuan dan keterampilan mahasiswa menjadi seorang guru
+                            yang handal dan profesional.</p>
+                    </div>
+                </div><!-- End Icon Box -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box">
+                        <i class="bi bi-book"></i>
+                        <h4>PBSI</h4>
+                        <p>Program Studi Pendidikan Bahasa dan Sastra Indonesia (PBSI) di STKIP Persada Khatulistiwa
+                            berfokus pada pengembangan kemampuan dan keterampilan mahasiswa menjadi seorang guru
+                            yang handal dan profesional.</p>
+                    </div>
+                </div><!-- End Icon Box -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-box">
+                        <i class="bi bi-book"></i>
+                        <h4>Biologi</h4>
+                        <p>Program Studi Biologi di STKIP Persada Khatulistiwa berfokus pada pengembangan
+                            kemampuan dan keterampilan mahasiswa menjadi seorang guru yang handal dan profesional.</p>
+                    </div>
+                </div><!-- End Icon Box -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-box">
+                        <i class="bi bi-book"></i>
+                        <h4>Komputer</h4>
+                        <p>Program Studi Komputer di STKIP Persada Khatulistiwa berfokus pada pengembangan
+                            kemampuan dan keterampilan mahasiswa menjadi seorang guru yang handal dan profesional.</p>
+                    </div>
+                </div><!-- End Icon Box -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="500">
+                    <div class="icon-box">
+                        <i class="bi bi-book"></i>
+                        <h4>Ekonomi</h4>
+                        <p>Program Studi Ekonomi di STKIP Persada Khatulistiwa berfokus pada pengembangan
+                            kemampuan dan keterampilan mahasiswa menjadi seorang guru yang handal dan profesional.</p>
+                    </div>
+                </div><!-- End Icon Box -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="600">
+                    <div class="icon-box">
+                        <i class="bi bi-book"></i>
+                        <h4>PPKN</h4>
+                        <p>Program Studi Pendidikan Pancasila dan Kewarganegaraan (PPKN) di STKIP Persada
+                            Khatulistiwa berfokus pada pengembangan kemampuan dan keterampilan mahasiswa menjadi
+                            seorang guru yang handal dan profesional.</p>
+                    </div>
+                </div><!-- End Icon Box -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="700">
+                    <div class="icon-box">
+                        <i class="bi bi-book"></i>
+                        <h4>PBI</h4>
+                        <p>Program Studi Pendidikan Bahasa Inggris (PBI) di STKIP Persada Khatulistiwa berfokus pada
+                            pengembangan kemampuan dan keterampilan mahasiswa menjadi seorang guru yang handal dan
+                            profesional.</p>
+                    </div>
+                </div><!-- End Icon Box -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="800">
+                    <div class="icon-box">
+                        <i class="bi bi-book"></i>
+                        <h4>Matematika</h4>
+                        <p>Program Studi Matematika di STKIP Persada Khatulistiwa berfokus pada pengembangan
+                            kemampuan dan keterampilan mahasiswa menjadi seorang guru yang handal dan profesional.</p>
+                    </div>
+                </div><!-- End Icon Box -->
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="900">
+                    <div class="icon-box">
+                        <i class="bi bi-book"></i>
+                        <h4>PGPAUD</h4>
+                        <p>Program Studi Pendidikan Anak Usia Dini (PGPAUD) di STKIP Persada Khatulistiwa berfokus pada
+                            pengembangan kemampuan dan keterampilan mahasiswa menjadi seorang guru yang handal dan
+                            profesional.</p>
+                    </div>
+                </div><!-- End Icon Box -->
+            </div>
+        </div>
+    </section><!-- /Program Studi -->
 
     <section id="jadwal" class="departments section light-background">
         <!-- Section Title -->
@@ -107,23 +210,15 @@
                                             <strong>Pendaftaran:</strong> {{ $jadwal_gel1->daftar_buka }} <br>
                                             <strong>Pengumuman Hasil:</strong> {{ $jadwal_gel1->pres_mum1 }} <br>
                                             <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel1->regi }}
-                                        </p> <br>
-                                        <strong>Jalur Reguler 2</strong>
-                                        <p>
-                                            <strong>Pendaftaran:</strong> {{ $reguler2->daftar_buka }} <br>
-                                            <strong>Pengecekan Kuota per-prodi:</strong> {{ $reguler2->pres_mum1 }}
-                                            <br>
-                                            <strong>Pengumuman Hasil:</strong> {{ $reguler2->pres_mum2 }} <br>
-                                            <strong>Pembayaran Registrasi:</strong> {{ $reguler2->regi }}
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingGelombang2">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseGelombang2" aria-expanded="false"
-                                        aria-controls="collapseGelombang2">
+                                    <button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseGelombang2"
+                                        aria-expanded="false" aria-controls="collapseGelombang2">
                                         <strong>Gelombang 2</strong>
                                     </button>
                                 </h2>
@@ -144,23 +239,15 @@
                                             <strong>Pengumuman Tahap 1:</strong> {{ $jadwal_gel2->pres_mum1 }} <br>
                                             <strong>Pengumuman Tahap 2:</strong> {{ $jadwal_gel2->pres_mum2 }} <br>
                                             <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel2->regi }}
-                                        </p> <br>
-                                        <strong>Jalur Reguler 2</strong>
-                                        <p>
-                                            <strong>Pendaftaran:</strong> {{ $reguler2->daftar_buka }} <br>
-                                            <strong>Pengecekan Kuota per-prodi:</strong> {{ $reguler2->pres_mum1 }}
-                                            <br>
-                                            <strong>Pengumuman Hasil:</strong> {{ $reguler2->pres_mum2 }} <br>
-                                            <strong>Pembayaran Registrasi:</strong> {{ $reguler2->regi }}
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingGelombang3">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapseGelombang3" aria-expanded="false"
-                                        aria-controls="collapseGelombang3">
+                                    <button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#collapseGelombang3"
+                                        aria-expanded="false" aria-controls="collapseGelombang3">
                                         <strong>Gelombang 3</strong>
                                     </button>
                                 </h2>
@@ -181,14 +268,6 @@
                                             <strong>Pengumuman Tahap 1:</strong> {{ $jadwal_gel3->pres_mum1 }} <br>
                                             <strong>Pengumuman Tahap 2:</strong> {{ $jadwal_gel3->pres_mum2 }} <br>
                                             <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel3->regi }}
-                                        </p> <br>
-                                        <strong>Jalur Reguler 2</strong>
-                                        <p>
-                                            <strong>Pendaftaran:</strong> {{ $reguler2->daftar_buka }} <br>
-                                            <strong>Pengecekan Kuota per-prodi:</strong> {{ $reguler2->pres_mum1 }}
-                                            <br>
-                                            <strong>Pengumuman Hasil:</strong> {{ $reguler2->pres_mum2 }} <br>
-                                            <strong>Pembayaran Registrasi:</strong> {{ $reguler2->regi }}
                                         </p>
                                     </div>
                                 </div>
@@ -255,7 +334,7 @@
                                     </ol>
                                 </td>
                             </tr>
-                            <tr>
+                            {{-- <tr>
                                 <td style="padding-bottom: 5px; text-align: center; vertical-align: middle;">
                                     <i style="color: green;" class="fas fa-users"></i>
                                     Jalur Reguler 2
@@ -270,7 +349,7 @@
                                         <li>Akta Kelahiran</li>
                                     </ol>
                                 </td>
-                            </tr>
+                            </tr> --}}
                         </tbody>
                     </table>
 
@@ -437,6 +516,7 @@
         <div class="container" data-aos="fade-up" data-aos-delay="100">
             <div class="row">
                 <div class="col-lg-12">
+                    <h5>Biaya Pendaftaran Awal</h5>
                     <div class="table-responsive">
                         <table class="table table-bordered table-striped">
                             <thead>
@@ -448,15 +528,71 @@
                             <tbody>
                                 <tr>
                                     <td>Prestasi</td>
-                                    <td>Rp 300.000</td>
+                                    <td>@rupiah($pendaftaran->prestasi_biaya)</td>
                                 </tr>
                                 <tr>
                                     <td>Tes</td>
-                                    <td>Rp 300.000</td>
+                                    <td>@rupiah($pendaftaran->test_biaya)</td>
                                 </tr>
-                                <tr>
+                                {{-- <tr>
                                     <td>Reguler 2</td>
                                     <td>Rp 300.000</td>
+                                </tr> --}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-lg-12">
+                    <h5>Biaya Pendaftaran Masuk</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width: 50%">Komponen Biaya</th>
+                                    <th class="text-center">Biaya</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Biaya Registrasi Mahasiswa Baru</td>
+                                    <td>@rupiah($biaya_regis->prestasi_biaya)</td>
+                                </tr>
+                                <tr>
+                                    <td>Biaya Pengembangan Kampus</td>
+                                    <td>@rupiah($biaya_pengembangan->prestasi_biaya)</td>
+                                </tr>
+                                <tr>
+                                    <td>SPP Tetap / Semester</td>
+                                    <td>@rupiah($biaya_spp->prestasi_biaya)</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th class="text-center">Total</th>
+                                    <th class="text-center">@rupiah($biaya_regis->prestasi_biaya + $biaya_pengembangan->prestasi_biaya + $biaya_spp->prestasi_biaya)</th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-lg-12">
+                    <h5>Biaya SKS</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center" style="width: 50%">SKS</th>
+                                    <th class="text-center">Biaya</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1 SKS</td>
+                                    <td>@rupiah($biaya_sks->prestasi_biaya)</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -464,7 +600,6 @@
                 </div>
             </div>
         </div>
-
     </section><!-- End Departments Section -->
 
     <!-- Faq Section -->

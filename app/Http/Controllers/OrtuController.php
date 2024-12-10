@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pmbinfo;
 use App\Models\Pmbortu;
 use App\Models\Pmbwali;
+use App\Models\Midtrans;
 use App\Models\Pmbsiswa;
 use App\Models\Pmbsekolah;
 use Illuminate\Http\Request;
@@ -32,7 +33,8 @@ class OrtuController extends Controller
 
         $data = Pmbortu::where('ortu_pengenal_siswa', auth()->user()->pengenal_akun)->first();
         $cekvalid = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
-        if ($cekvalid->valid_bayar != 2) {
+        $cek_midtrans = Midtrans::where('midtrans_akun_siswa', auth()->user()->pengenal_akun)->where('transaction_status', 'settlement')->first();
+        if ($cekvalid->valid_bayar != 2 && $cek_midtrans == false) {
             toastr()->warning('Anda belum melakukan pembayaran', 'Peringatan');
             return redirect()->back();
         }

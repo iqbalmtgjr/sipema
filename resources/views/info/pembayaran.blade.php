@@ -141,7 +141,9 @@
                                     dahulu.
                                     Klik Tombol "Bayar Sekarang" Untuk membayar uang pendaftaran.</p>
                             </div>
-                            <button class="btn btn-primary" id="pay-button">Bayar Sekarang</button>
+                            @if ($snapToken != null)
+                                <button class="btn btn-primary" id="pay-button">Bayar Sekarang</button>
+                            @endif
                             @if ($data->valid_bayar == 2)
                                 <h5>Silahkan untuk melanjutkan dalam pengisian data lengkap. Klik link dibawah untuk
                                     melanjutkan
@@ -170,6 +172,46 @@
                 <a href="{{ url('calon') }}" class="btn btn-primary btn-md float-right">Lanjutkan Pengisian Data</a>
             @endif
     @endif
+
+    <div class="card shadow mt-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Riwayat Pembayaran</h6>
+        </div>
+        <div class="card-body">
+            <a href="{{ url('cekTransaksi') }}" class="btn btn-sm btn-primary mb-3">Cek Transaksi</a>
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>Jumlah Pembayaran</th>
+                        <th>Status Pembayaran</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($midtrans as $item)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ date('d F Y', strtotime($item->tgl_transaksi)) }}</td>
+                            </td>
+                            <td>@rupiah($item->jmlh_pembayaran)</td>
+                            <td>
+                                @if ($item->transaction_status == 'settlement')
+                                    <span class="badge badge-success">{{ $item->transaction_status }}</span>
+                                @elseif($item->transaction_status == 'pending')
+                                    <span class="badge badge-warning">{{ $item->transaction_status }}</span>
+                                @elseif($item->transaction_status == 'expire')
+                                    <span class="badge badge-danger">{{ $item->transaction_status }}</span>
+                                @else
+                                    <span class="badge badge-info">{{ $item->transaction_status }}</span>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
 @endsection
 @push('footer')
     <!--<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>-->
@@ -177,6 +219,9 @@
         data-client-key="{{ config('midtrans.client_key') }}"></script>
     <script>
         document.getElementById('pay-button').onclick = function() {
+            // if ('{{ $snapToken }}' == null) {
+            //     alert('Silahkan Melakukan Pembayaran Terlebih Dahulu');
+            // } else {
             snap.pay('{{ $snapToken }}', {
                 onSuccess: function(result) {
                     // console.log(result.order_id)
@@ -215,9 +260,6 @@
                             // alert("Terjadi kesalahan saat memproses pembayaran.");
                         },
                     });
-
-
-                    // alert('Pembayaran Berhasil!');
                 },
 
                 onError: function(result) {
@@ -225,14 +267,40 @@
                     // window.location.href = "{{ url('api/afterpay') }}";
                 },
                 onPending: function(result) {
-                    alert('Pembayaran Sedang Diproses!');
-                    // window.location.href = "{{ url('api/afterpay') }}";
+                    $.ajax({
+                        url: "{{ url('api/afterpay') }}", // URL API
+                        type: "POST", // HTTP Method
+                        dataType: "json", // Tipe data respons dari server
+                        contentType: "application/json", // Tipe konten data yang dikirim
+                        data: JSON.stringify({
+                            signature_key: result.signature_key,
+                            order_id: result.order_id,
+                            status_code: result.status_code,
+                            transaction_status: result.transaction_status,
+                            gross_amount: result.gross_amount,
+                            pengenal_akun: "{{ auth()->user()->pengenal_akun }}",
+                            email_siswa: "{{ auth()->user()->email_akun_siswa }}"
+                        }),
+                        success: function(data) {
+                            // console.log("Success:", data);
+                            window.location.href = "{{ url('pembayaran') }}";
+                            // alert("Pembayaran berhasil!");
+                            // Lakukan sesuatu setelah berhasil
+                        },
+                        error: function(xhr, status, error) {
+                            window.location.href = "{{ url('pembayaran') }}";
+                            // console.error("Error:", xhr.responseText || error);
+                            // alert("Terjadi kesalahan saat memproses pembayaran.");
+                        },
+                    });
+                    // alert('Pembayaran Sedang Diproses!');
                 },
-                onClose: function(result) {
-                    alert('Pembayaran Ditutup!');
-                    // window.location.href = "{{ url('api/afterpay') }}";
+                onClose: function() {
+                    // alert('Pembayaran Ditutup!');
                 }
             });
+            // }
+
         };
     </script>
 @endpush

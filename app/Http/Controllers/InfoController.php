@@ -17,6 +17,7 @@ use App\Models\Pmbpenerimaan;
 use App\Models\Biayakuliahpmb;
 use App\Models\Pembayaranrinci;
 use Illuminate\Support\Facades\Validator;
+use Midtrans\Transaction;
 
 class InfoController extends Controller
 {
@@ -62,6 +63,8 @@ class InfoController extends Controller
         $cekbukti = Pmbupload::where('upload_id_siswa', auth()->user()->pengenal_akun)->first();
         $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
 
+        // dd($cek_midtrans);
+
         $order_id = rand();
         $params = array(
             'transaction_details' => array(
@@ -90,10 +93,16 @@ class InfoController extends Controller
             ),
         );
 
+        $midtrans = Midtrans::where('midtrans_akun_siswa', auth()->user()->pengenal_akun)->orderBy('id', 'desc')->get();
+        $cek_midtrans = Midtrans::where('midtrans_akun_siswa', auth()->user()->pengenal_akun)->where('transaction_status', 'settlement')->first();
 
-        $snapToken = Snap::getSnapToken($params);
-
-        return view('info.pembayaran', compact('cekputus', 'data', 'biaya', 'cekbukti', 'cekjalur', 'snapToken'));
+        if ($cek_midtrans != null) {
+            $snapToken = null;
+        } else {
+            $snapToken = Snap::getSnapToken($params);
+        }
+        // dd($snapToken);
+        return view('info.pembayaran', compact('cekputus', 'data', 'biaya', 'cekbukti', 'cekjalur', 'snapToken', 'midtrans'));
     }
 
     public function valid(Request $request)
@@ -110,13 +119,31 @@ class InfoController extends Controller
         $midtrans = Midtrans::updateOrCreate(
             ['order_id' => $request->order_id],
             [
-                'akun_siswa' => $request->pengenal_akun,
+                'midtrans_akun_siswa' => $request->pengenal_akun,
                 'email' => $request->email_siswa,
                 'jmlh_pembayaran' => $request->gross_amount,
                 'transaction_status' => $request->transaction_status,
                 'tgl_transaksi' => now(),
             ]
         );
+    }
+
+    public function cekTransaksi()
+    {
+        $data_siswa = Midtrans::where('midtrans_akun_siswa', auth()->user()->pengenal_akun)->get();
+        foreach ($data_siswa as $midtrans) {
+            $status = Transaction::status($midtrans->order_id);
+            if ($status) {
+                $data = Midtrans::where('order_id', $midtrans->order_id)->first();
+                $data->update(['transaction_status' => $status->transaction_status]);
+
+                if ($status->transaction_status == "settlement") {
+                    $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
+                    $data->update(['valid_bayar' => 2]);
+                }
+            }
+        }
+        return redirect()->back();
     }
 
     public function postMetodeBayar(Request $request)

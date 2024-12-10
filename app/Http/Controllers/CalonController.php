@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pmbakun;
+use App\Models\Midtrans;
 use App\Models\Pmbsiswa;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Barryvdh\DomPDF\Facade\Pdf;
 
 class CalonController extends Controller
 {
@@ -18,10 +19,13 @@ class CalonController extends Controller
     {
         // dd(Auth::user());
         $data = Pmbsiswa::where('akun_siswa', auth()->user()->pengenal_akun)->first();
-        if ($data->valid_bayar != 2) {
+        $cek_midtrans = Midtrans::where('midtrans_akun_siswa', auth()->user()->pengenal_akun)->where('transaction_status', 'settlement')->first();
+        // dd($cek_midtrans ==);
+        if ($data->valid_bayar != 2 && $cek_midtrans == false) {
             toastr()->warning('Anda belum melakukan pembayaran', 'Peringatan');
             return redirect()->back();
         }
+
         return view('calon.index', compact('data'));
     }
 

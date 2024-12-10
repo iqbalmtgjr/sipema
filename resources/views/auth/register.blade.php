@@ -196,7 +196,13 @@
                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
                             </div> --}}
                             <div class="text-center">
-                                <a class="small" href="{{ url('/login') }}">Sudah punya akun? Login!</a>
+                                <a class="btn btn-danger btn-user btn-block"
+                                    style="background-color: #FFC107; border-color: #FFC107"
+                                    href="{{ url('/') }}">Kembali ke
+                                    halaman utama</a>
+                                <br>
+                                <a class="btn btn-primary btn-user btn-block" href="{{ url('/login') }}">Sudah punya
+                                    akun? Login Sekarang!</a>
                             </div>
                         </div>
                     </div>

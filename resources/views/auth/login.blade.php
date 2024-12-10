@@ -100,7 +100,13 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="{{ url('/register') }}">Belum punya akun? Buat Akun
+                                        <a class="btn btn-danger btn-user btn-block"
+                                            style="background-color: #FFC107; border-color: #FFC107"
+                                            href="{{ url('/') }}">Kembali
+                                            ke Halaman Utama</a>
+                                        <br>
+                                        <a class="btn btn-primary btn-user btn-block"
+                                            href="{{ url('/register') }}">Belum punya akun? Buat Akun
                                             Sekarang!</a>
                                     </div>
                                 </div>
