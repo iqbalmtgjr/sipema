@@ -18,7 +18,7 @@ class isTamu
     {
         if (Auth::check()) {
             toastr()->warning('Kamu Sudah Dalam Keadaan Login !', 'Peringatan');
-            return redirect()->back();
+            return redirect('info');
         }
         return $next($request);
     }

@@ -36,7 +36,7 @@
                     <div class="d-flex flex-column justify-content-center">
                         <div class="row gy-4">
 
-                            <div class="col-xl-6 d-flex align-items-stretch">
+                            <div class="col-xl-4 d-flex align-items-stretch">
                                 <div class="icon-box" data-aos="zoom-out" data-aos-delay="300">
                                     <i class="bi bi-trophy"></i>
                                     <h4>Jalur Prestasi</h4>
@@ -45,7 +45,7 @@
                                 </div>
                             </div><!-- End Icon Box -->
 
-                            <div class="col-xl-6 d-flex align-items-stretch">
+                            <div class="col-xl-4 d-flex align-items-stretch">
                                 <div class="icon-box" data-aos="zoom-out" data-aos-delay="400">
                                     <i class="bi bi-pencil-square"></i>
                                     <h4>Jalur Tes</h4>
@@ -53,14 +53,14 @@
                                         mengikuti seleksi masuk.</p>
                                 </div>
                             </div><!-- End Icon Box -->
-                            {{-- <div class="col-xl-4 d-flex align-items-stretch">
+                            <div class="col-xl-4 d-flex align-items-stretch">
                                 <div class="icon-box" data-aos="zoom-out" data-aos-delay="500">
                                     <i class="bi bi-book"></i>
                                     <h4>Jalur Reguler 2</h4>
                                     <p>Reguler 2 adalah kelas karyawan yang diadakan di hari Jumat dan Sabtu. Pilih
                                         jalur ini untuk memanfaatkan waktu luang Anda menjadi lebih produktif.</p>
                                 </div>
-                            </div> --}}
+                            </div>
 
                         </div>
                     </div>
@@ -210,6 +210,14 @@
                                             <strong>Pendaftaran:</strong> {{ $jadwal_gel1->daftar_buka }} <br>
                                             <strong>Pengumuman Hasil:</strong> {{ $jadwal_gel1->pres_mum1 }} <br>
                                             <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel1->regi }}
+                                        </p> <br>
+                                        <strong>Jalur Reguler 2</strong>
+                                        <p>
+                                            <strong>Pendaftaran:</strong> {{ $reguler2->daftar_buka }} <br>
+                                            <strong>Pengecekan Kuota per-prodi:</strong> {{ $reguler2->pres_mum1 }}
+                                            <br>
+                                            <strong>Pengumuman Hasil:</strong> {{ $reguler2->pres_mum2 }} <br>
+                                            <strong>Pembayaran Registrasi:</strong> {{ $reguler2->regi }}
                                         </p>
                                     </div>
                                 </div>
@@ -239,6 +247,14 @@
                                             <strong>Pengumuman Tahap 1:</strong> {{ $jadwal_gel2->pres_mum1 }} <br>
                                             <strong>Pengumuman Tahap 2:</strong> {{ $jadwal_gel2->pres_mum2 }} <br>
                                             <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel2->regi }}
+                                        </p> <br>
+                                        <strong>Jalur Reguler 2</strong>
+                                        <p>
+                                            <strong>Pendaftaran:</strong> {{ $reguler2->daftar_buka }} <br>
+                                            <strong>Pengecekan Kuota per-prodi:</strong> {{ $reguler2->pres_mum1 }}
+                                            <br>
+                                            <strong>Pengumuman Hasil:</strong> {{ $reguler2->pres_mum2 }} <br>
+                                            <strong>Pembayaran Registrasi:</strong> {{ $reguler2->regi }}
                                         </p>
                                     </div>
                                 </div>
@@ -268,6 +284,14 @@
                                             <strong>Pengumuman Tahap 1:</strong> {{ $jadwal_gel3->pres_mum1 }} <br>
                                             <strong>Pengumuman Tahap 2:</strong> {{ $jadwal_gel3->pres_mum2 }} <br>
                                             <strong>Pembayaran Registrasi:</strong> {{ $jadwal_gel3->regi }}
+                                        </p> <br>
+                                        <strong>Jalur Reguler 2</strong>
+                                        <p>
+                                            <strong>Pendaftaran:</strong> {{ $reguler2->daftar_buka }} <br>
+                                            <strong>Pengecekan Kuota per-prodi:</strong> {{ $reguler2->pres_mum1 }}
+                                            <br>
+                                            <strong>Pengumuman Hasil:</strong> {{ $reguler2->pres_mum2 }} <br>
+                                            <strong>Pembayaran Registrasi:</strong> {{ $reguler2->regi }}
                                         </p>
                                     </div>
                                 </div>
@@ -334,7 +358,7 @@
                                     </ol>
                                 </td>
                             </tr>
-                            {{-- <tr>
+                            <tr>
                                 <td style="padding-bottom: 5px; text-align: center; vertical-align: middle;">
                                     <i style="color: green;" class="fas fa-users"></i>
                                     Jalur Reguler 2
@@ -349,7 +373,7 @@
                                         <li>Akta Kelahiran</li>
                                     </ol>
                                 </td>
-                            </tr> --}}
+                            </tr>
                         </tbody>
                     </table>
 
@@ -534,10 +558,10 @@
                                     <td>Tes</td>
                                     <td>@rupiah($pendaftaran->test_biaya)</td>
                                 </tr>
-                                {{-- <tr>
+                                <tr>
                                     <td>Reguler 2</td>
-                                    <td>Rp 300.000</td>
-                                </tr> --}}
+                                    <td>@rupiah($pendaftaran->reguler2_biaya)</td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
