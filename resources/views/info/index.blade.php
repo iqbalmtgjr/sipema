@@ -115,7 +115,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-4 col-form-label">Status</label>
                     <div class="col-sm-8">
-                        <span class="form-control text-success">Sudah Divalidasi</span>
+                        <span class="form-control text-success">Sudah Bayar</span>
                     </div>
                 </div>
                 <a class="btn btn-success btn-sm" href="https://chat.whatsapp.com/I6rVyHgbNzULLoymOiZFqq"><span
