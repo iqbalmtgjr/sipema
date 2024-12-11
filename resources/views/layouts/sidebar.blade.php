@@ -26,16 +26,16 @@
             <span>Informasi PMB</span></a>
     </li> -->
 
-    <li class="nav-item {{ request()->is('info') ? 'active' : '' }}">
-        <a class="nav-link " href="{{ url('info') }}">
-            <i class="fas fa-id-card"></i>
-            <span>Informasi Siswa</span></a>
-    </li>
-
     <li class="nav-item {{ request()->is('pembayaran') || request()->is('pembayaran/konfirmasi') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('pembayaran') }}">
             <i class="fas fa-hand-holding-usd"></i>
             <span>Informasi Pembayaran</span></a>
+    </li>
+
+    <li class="nav-item {{ request()->is('info') ? 'active' : '' }}">
+        <a class="nav-link " href="{{ url('info') }}">
+            <i class="fas fa-id-card"></i>
+            <span>Informasi Siswa</span></a>
     </li>
 
     @if (auth()->user()->jalur == 'test')

@@ -160,7 +160,7 @@ class AuthController extends Controller
             ]);
             toastr()->success('Sistem Informasi Pendaftaran Mahasiswa', 'Selamat Datang di SIPEMA ' . auth()->user()->nama_siswa);
             // return redirect('/infoPmb');
-            return redirect('/info');
+            return redirect('/pembayaran');
         }
 
         toastr()->error('Email atau Password Salah!', 'Gagal');

@@ -49,6 +49,7 @@ Route::group(['middleware' => ['isLogin', 'custom.user']], function () {
     Route::post('uploadBukti', [InfoController::class, 'uploadBukti']);
     Route::post('uploadBuktibayar', [InfoController::class, 'uploadBuktibayar']);
     Route::get('infoTes', [InfoController::class, 'infoTes']);
+    Route::post('update/jalur', [InfoController::class, 'updateJalur'])->name('updateJalur');
 
     //pembayaran
     // Route::get('afterpay', [InfoController::class, 'valid'])->name('afterpay');

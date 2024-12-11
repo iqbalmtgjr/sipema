@@ -110,8 +110,7 @@
 
             </div>
             <a href="{{ url('calon') }}" class="btn btn-primary btn-md float-right mt-3 mb-3">Lanjutkan untuk melengkapi
-                data
-                anda</a>
+                data anda</a>
         @else
             @if ($data->metode_bayar != null && $data->valid_bayar == 2)
                 <div class="text-center alert alert-success" role="alert">
@@ -166,6 +165,7 @@
                 </div>
             </div>
             @if ($data->valid_bayar == 2 && $cekjalur->jalur == 'test')
+                <a href="{{ url('info') }}" class="btn btn-warning btn-md">Lihat Informasi Anda</a>
                 <a href="{{ url('infoTes') }}" class="btn btn-info btn-md">Lihat Informasi Tes Online</a>
                 <a href="{{ url('calon') }}" class="btn btn-primary btn-md">Lanjutkan Pengisian Data</a>
             @elseif($data->valid_bayar == 2 && $cekjalur->jalur == 'prestasi')

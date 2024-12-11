@@ -5,6 +5,29 @@
             Selamat <br> <strong> Anda dinyatakan lulus di STKIP Persada Khatulistiwa Sintang! </strong>
         </div>
     @endif
+    @if (auth()->user()->valid_bayar != 2)
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Ingin Ubah Jalur Pendaftaran?</h6>
+            </div>
+            <div class="card-body mb-4">
+                <form action="{{ route('updateJalur') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="jalurPendaftaran">Pilih Jalur Pendaftaran</label>
+                        <select class="form-control" id="jalurPendaftaran" name="jalurPendaftaran">
+                            <option value="">-- Pilih Jalur --</option>
+                            <option value="prestasi">Prestasi</option>
+                            <option value="test">Tes</option>
+                            <option value="reguler2">Reguler 2</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ubah Jalur</button>
+                </form>
+
+            </div>
+        </div>
+    @endif
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Info Siswa</h6>
@@ -102,7 +125,7 @@
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-4 col-form-label">Status</label>
                     <div class="col-sm-8">
-                        <span class="form-control text-danger">Belum Divalidasi</span>
+                        <span class="form-control text-danger">Belum Bayar</span>
                     </div>
                 </div>
             @else
@@ -115,6 +138,10 @@
             @endif
         </div>
     </div>
-    <a class="btn btn-success btn-md float-right" href="{{ url('pembayaran') }}">Lanjut
-        Pendaftaran <i class="fas fa-arrow-right"></i></a>
+    @if (auth()->user()->valid_bayar == 2 && $cekjalur->jalur == 'test')
+        <a href="{{ url('infoTes') }}" class="btn btn-info btn-md">Lihat Informasi Tes Online</a>
+        <a href="{{ url('calon') }}" class="btn btn-primary btn-md">Lanjutkan Pengisian Data</a>
+    @elseif(auth()->user()->valid_bayar == 2 && $cekjalur->jalur == 'prestasi')
+        <a href="{{ url('calon') }}" class="btn btn-primary btn-md float-right">Lanjutkan Pengisian Data</a>
+    @endif
 @endsection

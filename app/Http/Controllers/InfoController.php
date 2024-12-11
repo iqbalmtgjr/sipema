@@ -40,6 +40,29 @@ class InfoController extends Controller
         return view('info.infopmb', compact('biaya', 'cekjalur', 'data', 'regis'));
     }
 
+    public function updateJalur(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'jalurPendaftaran' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            toastr()->error('Anda belum pilih jalur pendaftaran!', 'Gagal');
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $data = Pmbprodi::where('prodi_id_siswa', auth()->user()->akun_siswa)->first();
+        $data->update([
+            'jalur' => $request->jalurPendaftaran,
+        ]);
+
+        toastr()->success('Berhasil ubah jalur pendaftaran!', 'Selamat');
+        return redirect()->back();
+    }
+
     public function infoMhs()
     {
         $data = Pmbakun::leftJoin('pmb_siswa', 'pmb_akun.pengenal_akun', '=', 'pmb_siswa.akun_siswa')
@@ -47,10 +70,11 @@ class InfoController extends Controller
             ->where('pmb_akun.pengenal_akun', auth()->user()->pengenal_akun)
             ->first();
         $cekputus = Pmbpenerimaan::where('siswa_penerimaan', auth()->user()->pengenal_akun)->where('umumkan', 1)->first();
+        $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
         // if ($cekputus == true && $cekputus->status_penerimaan == 1) {
         //     return redirect('pembayaran');
         // } else {
-        return view('info.index', compact('data', 'cekputus'));
+        return view('info.index', compact('data', 'cekputus', 'cekjalur'));
         // }
     }
 
@@ -222,6 +246,17 @@ class InfoController extends Controller
         return view('info.infotes', compact('data', 'cekjalur'));
     }
 
+    /*************  ✨ Codeium Command ⭐  *************/
+    /**
+     * Konfirmasi Pembayaran
+     *
+     * Menampilkan halaman konfirmasi pembayaran, berisi info jalur dan biaya
+     * yang dibayarkan. Juga menampilkan riwayat pembayaran yang pernah
+     * dilakukan.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    /******  ea19a5c8-1125-4f54-a865-4d08bbc5c8bb  *******/
     public function konfirmasi()
     {
         $cekjalur = Pmbprodi::where('prodi_id_siswa', auth()->user()->pengenal_akun)->first();
