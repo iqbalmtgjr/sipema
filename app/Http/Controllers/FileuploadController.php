@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pmbinfo;
 use App\Models\Pmbortu;
+use App\Models\Pmbwali;
 use App\Models\Midtrans;
 use App\Models\Pmbprodi;
 use App\Models\Pmbsiswa;
@@ -32,7 +33,8 @@ class FileuploadController extends Controller
             return redirect()->back();
         }
         $cek_ortu = Pmbortu::where('ortu_pengenal_siswa', auth()->user()->pengenal_akun)->first();
-        if ($cek_ortu == false) {
+        $cek_wali = Pmbwali::where('wali_akun_siswa', auth()->user()->pengenal_akun)->first();
+        if ($cek_ortu == false || $cek_wali == false) {
             toastr()->warning('Anda belum mengisi data orang tua atau wali', 'Peringatan');
             return redirect()->back();
         }

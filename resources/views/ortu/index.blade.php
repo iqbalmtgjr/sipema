@@ -3,34 +3,12 @@
     <div class="alert alert-info d-flex align-items-center" role="alert">
         <i class="fas fa-info-circle me-2"></i>&nbsp;&nbsp;&nbsp;
         <div>
-            {{-- <strong>Info:</strong> <br> --}}
-            Jika anda masih memiliki kedua orangtua ataupun hanya salah satu, silahkan pilih isi informasi orangtua. Dan
-            jika
-            sudah wafat, silahkan
-            pilih isi informasi wali.
+            Isi identitas ayah dan ibu. Bisa dikosongkan apabila ayah dan ibu tidak ada, wafat, jauh. <br>
+            Jika identitas ayah dan ibu kosong, silahkan isi formulir wali.
         </div>
     </div>
 
-    <div class="card mb-4" id="pilih">
-        <div class="card-header">
-            <h6 class="text-primary">Pilih Informasi yang ingin di Isi</h6>
-        </div>
-        <!-- /.card-header -->
-        <div class="card-body">
-            <div class="form-group row">
-                <label for="inputPilih" class="col-sm-2 col-form-label">Pilih</label>
-                <div class="col-sm-10">
-                    <select class="form-control" id="inputPilih" onchange="pilihOrtuWali(this.value)">
-                        <option value="">Pilih</option>
-                        <option value="ortu">Isi Informasi Orang Tua</option>
-                        <option value="wali">Isi Informasi Wali</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="mb-4" id="ortu" style="display: none;">
+    <div class="mb-4" id="ortu">
         <form action="{{ url('postOrtu') }}" method="post">
             @csrf
             <div class="card">
@@ -115,26 +93,65 @@
                             <select class="form-control @error('pekerjaan_ayah') is-invalid @enderror" name="pekerjaan_ayah"
                                 id="">
                                 <option value="">-- Pilih Pekerjaan Ayah --</option>
-                                <option value="karyawan swasta"
-                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'karyawan swasta' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'karyawan swasta' ? 'selected' : '' }} @endif>
-                                    Karyawan Swasta</option>
-                                <option value="pegawai negeri"
-                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'pegawai negeri' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'pegawai negeri' ? 'selected' : '' }} @endif>
-                                    Pegawai Negeri</option>
-                                <option value="wiraswasta"
-                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'wiraswasta' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'wiraswasta' ? 'selected' : '' }} @endif>
-                                    Wiraswasta</option>
-                                <option value="pensiunan"
-                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'pensiunan' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'pensiunan' ? 'selected' : '' }} @endif>
+                                <option value="Pimpinan/Manjerial"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Pimpinan/Manjerial' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Pimpinan/Manjerial' ? 'selected' : '' }} @endif>
+                                    Pimpinan/Manjerial</option>
+                                <option value="PNS/TNI/Polri"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'PNS/TNI/Polri' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'PNS/TNI/Polri' ? 'selected' : '' }} @endif>
+                                    PNS/TNI/Polri</option>
+                                <option value="Pensiunan"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Pensiunan' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Pensiunan' ? 'selected' : '' }} @endif>
                                     Pensiunan</option>
-                                <option value="ibu rumah tangga"
-                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'ibu rumah tangga' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'ibu rumah tangga' ? 'selected' : '' }} @endif>
-                                    Ibu Rumah Tangga</option>
+                                <option value="Peternak"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Peternak' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Peternak' ? 'selected' : '' }} @endif>
+                                    Peternak</option>
+                                <option value="Wiraswasta"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Wiraswasta' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Wiraswasta' ? 'selected' : '' }} @endif>
+                                    Wiraswasta</option>
+                                <option value="Petani"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Petani' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Petani' ? 'selected' : '' }} @endif>
+                                    Petani</option>
+                                <option value="Tim Ahli/Konsultan"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Tim Ahli/Konsultan' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Tim Ahli/Konsultan' ? 'selected' : '' }} @endif>
+                                    Tim Ahli/Konsultan</option>
+                                <option value="Tenaga Pengajar/Instruktur/Fasilitator"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Tenaga Pengajar/Instruktur/Fasilitator' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Tenaga Pengajar/Instruktur/Fasilitator' ? 'selected' : '' }} @endif>
+                                    Tenaga Pengajar/Instruktur/Fasilitator</option>
+                                <option value="Sudah Meninggal"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Sudah Meninggal' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Sudah Meninggal' ? 'selected' : '' }} @endif>
+                                    Sudah Meninggal</option>
+                                <option value="Tidak Bekerja"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Tidak Bekerja' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Tidak Bekerja' ? 'selected' : '' }} @endif>
+                                    Tidak Bekerja</option>
+                                <option value="Pedagang Kecil"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Pedagang Kecil' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Pedagang Kecil' ? 'selected' : '' }} @endif>
+                                    Pedagang Kecil</option>
+                                <option value="Magang"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Magang' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Magang' ? 'selected' : '' }} @endif>
+                                    Magang</option>
+                                <option value="Nelayan"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Nelayan' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Nelayan' ? 'selected' : '' }} @endif>
+                                    Nelayan</option>
+                                <option value="Pedagang Besar"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Pedagang Besar' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Pedagang Besar' ? 'selected' : '' }} @endif>
+                                    Pedagang Besar</option>
+                                <option value="Karyawan Swasta"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Karyawan Swasta' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Karyawan Swasta' ? 'selected' : '' }} @endif>
+                                    Karyawan Swasta</option>
+                                <option value="Buruh"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Buruh' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Buruh' ? 'selected' : '' }} @endif>
+                                    Buruh</option>
+                                <option value="Peneliti"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Peneliti' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Peneliti' ? 'selected' : '' }} @endif>
+                                    Peneliti</option>
+                                <option value="Wirausaha"
+                                    @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'Wirausaha' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'Wirausaha' ? 'selected' : '' }} @endif>
+                                    Wirausaha</option>
                                 <option value="lainnya"
                                     @if ($data == true && $data->pekerjaan_ayah != null) {{ $data->pekerjaan_ayah == 'lainnya' ? 'selected' : '' }} @else {{ old('pekerjaan_ayah') == 'lainnya' ? 'selected' : '' }} @endif>
                                     Lainnya</option>
                             </select>
-                            @error('pekerjaan_ibu')
+                            @error('pekerjaan_ayah')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -148,26 +165,78 @@
                             <select class="form-control @error('pendidikan_ayah') is-invalid @enderror"
                                 name="pendidikan_ayah" id="">
                                 <option value="">-- Pilih Pendidikan Terakhir Ayah --</option>
-                                <option value="SD"
-                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'SD' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'SD' ? 'selected' : '' }} @endif>
-                                    SD</option>
-                                <option value="SMP/Mts"
-                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'SMP/Mts' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'SMP/Mts' ? 'selected' : '' }} @endif>
-                                    SMP/Mts</option>
-                                <option value="SMA/SMK"
-                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'SMA/SMK' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'SMA/SMK' ? 'selected' : '' }} @endif>
-                                    SMA/SMK</option>
-                                <option value="Diploma"
-                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'Diploma' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'Diploma' ? 'selected' : '' }} @endif>
-                                    Diploma</option>
-                                <option value="Sarjana"
-                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'Sarjana' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'Sarjana' ? 'selected' : '' }} @endif>
-                                    Sarjana</option>
-                                <option value="Pasca Sarjana"
-                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'Pasca Sarjana' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'Pasca Sarjana' ? 'selected' : '' }} @endif>
-                                    Pasca Sarjana</option>
+                                <option value="SD/Sederajat"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'SD/Sederajat' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'SD/Sederajat' ? 'selected' : '' }} @endif>
+                                    SD/Sederajat</option>
+                                <option value="Paket C"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'Paket C' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'Paket C' ? 'selected' : '' }} @endif>
+                                    Paket C</option>
+                                <option value="S1"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'S1' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'S1' ? 'selected' : '' }} @endif>
+                                    S1</option>
+                                <option value="Tidak Sekolah"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'Tidak Sekolah' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'Tidak Sekolah' ? 'selected' : '' }} @endif>
+                                    Tidak Sekolah</option>
+                                <option value="SMP/Sederajat"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'SMP/Sederajat' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'SMP/Sederajat' ? 'selected' : '' }} @endif>
+                                    SMP/Sederajat</option>
+                                <option value="Putus SD"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'Putus SD' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'Putus SD' ? 'selected' : '' }} @endif>
+                                    Putus SD</option>
+                                <option value="S2"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'S2' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'S2' ? 'selected' : '' }} @endif>
+                                    S2</option>
+                                <option value="Sp-1"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'Sp-1' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'Sp-1' ? 'selected' : '' }} @endif>
+                                    Sp-1</option>
+                                <option value="PAUD"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'PAUD' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'PAUD' ? 'selected' : '' }} @endif>
+                                    PAUD</option>
+                                <option value="D1"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'D1' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'D1' ? 'selected' : '' }} @endif>
+                                    D1</option>
+                                <option value="Informal"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'Informal' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'Informal' ? 'selected' : '' }} @endif>
+                                    Informal</option>
+                                <option value="Profesi"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'Profesi' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'Profesi' ? 'selected' : '' }} @endif>
+                                    Profesi</option>
+                                <option value="S2 Terapan"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'S2 Terapan' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'S2 Terapan' ? 'selected' : '' }} @endif>
+                                    S2 Terapan</option>
+                                <option value="S3 Terapan"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'S3 Terapan' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'S3 Terapan' ? 'selected' : '' }} @endif>
+                                    S3 Terapan</option>
+                                <option value="SMA/Sederajat"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'SMA/Sederajat' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'SMA/Sederajat' ? 'selected' : '' }} @endif>
+                                    SMA/Sederajat</option>
+                                <option value="S3"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'S3' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'S3' ? 'selected' : '' }} @endif>
+                                    S3</option>
+                                <option value="TK/Sederajat"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'TK/Sederajat' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'TK/Sederajat' ? 'selected' : '' }} @endif>
+                                    TK/Sederajat</option>
+                                <option value="Non formal"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'Non formal' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'Non formal' ? 'selected' : '' }} @endif>
+                                    Non formal</option>
+                                <option value="Paket A"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'Paket A' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'Paket A' ? 'selected' : '' }} @endif>
+                                    Paket A</option>
+                                <option value="D4"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'D4' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'D4' ? 'selected' : '' }} @endif>
+                                    D4</option>
+                                <option value="D3"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'D3' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'D3' ? 'selected' : '' }} @endif>
+                                    D3</option>
+                                <option value="D2"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'D2' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'D2' ? 'selected' : '' }} @endif>
+                                    D2</option>
+                                <option value="Lainnya"
+                                    @if ($data == true && $data->pendidikan_ayah != null) {{ $data->pendidikan_ayah == 'Lainnya' ? 'selected' : '' }} @else {{ old('pendidikan_ayah') == 'Lainnya' ? 'selected' : '' }} @endif>
+                                    Lainnya</option>
+
                             </select>
-                            @error('pendidikan_ibu')
+                            @error('pendidikan_ayah')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -211,17 +280,30 @@
                             <select class="form-control @error('penghasilan_ayah') is-invalid @enderror"
                                 name="penghasilan_ayah" id="">
                                 <option value="">-- Pilih Penghasilan Ayah --</option>
-                                <option value="<1juta"
-                                    @if ($data == true && $data->penghasilan_ayah != null) {{ $data->penghasilan_ayah == '<1juta' ? 'selected' : '' }} @else {{ old('penghasilan_ayah') == '<1juta' ? 'selected' : '' }} @endif>
-                                    < 1 Juta</option>
-                                <option value="2 - 4juta"
-                                    @if ($data == true && $data->penghasilan_ayah != null) {{ $data->penghasilan_ayah == '2 - 4juta' ? 'selected' : '' }} @else {{ old('penghasilan_ayah') == '2 - 4juta' ? 'selected' : '' }} @endif>
-                                    2 - 4 Juta</option>
-                                <option value=">5juta" @if ($data == true && $data->penghasilan_ayah != null)
-                                    {{ $data->penghasilan_ayah == '>5juta' ? 'selected' : '' }}
-                                @else
-                                    {{ old('penghasilan_ayah') == '>5juta' ? 'selected' : '' }}
-                                    @endif> > 5 Juta</option>
+                                <option value="Rp. 5.000.000-Rp. 20.000.000"
+                                    @if ($data == true && $data->penghasilan_ayah != null) {{ $data->penghasilan_ayah == 'Rp. 5.000.000-Rp. 20.000.000' ? 'selected' : '' }} @else 
+                                            {{ old('penghasilan_ayah') == 'Rp. 5.000.000-Rp. 20.000.000' ? 'selected' : '' }} @endif>
+                                    Rp. 5.000.000-Rp. 20.000.000</option>
+                                <option value="Rp. 2.000.000-Rp. 4.999.999"
+                                    @if ($data == true && $data->penghasilan_ayah != null) {{ $data->penghasilan_ayah == 'Rp. 2.000.000-Rp. 4.999.999' ? 'selected' : '' }} @else 
+                                            {{ old('penghasilan_ayah') == 'Rp. 2.000.000-Rp. 4.999.999' ? 'selected' : '' }} @endif>
+                                    Rp. 2.000.000-Rp. 4.999.999</option>
+                                <option value="Rp. 1.000.000-Rp. 1.999.999"
+                                    @if ($data == true && $data->penghasilan_ayah != null) {{ $data->penghasilan_ayah == 'Rp. 1.000.000-Rp. 1.999.999' ? 'selected' : '' }} @else
+                                            {{ old('penghasilan_ayah') == 'Rp. 1.000.000-Rp. 1.999.999' ? 'selected' : '' }} @endif>
+                                    Rp. 1.000.000-Rp. 1.999.999</option>
+                                <option value="Rp. 500.000-Rp. 999.999"
+                                    @if ($data == true && $data->penghasilan_ayah != null) {{ $data->penghasilan_ayah == 'Rp. 500.000-Rp. 999.999' ? 'selected' : '' }} @else
+                                            {{ old('penghasilan_ayah') == 'Rp. 500.000-Rp. 999.999' ? 'selected' : '' }} @endif>
+                                    Rp. 500.000-Rp. 999.999</option>
+                                <option value="Lebih dari Rp. 20.000.000"
+                                    @if ($data == true && $data->penghasilan_ayah != null) {{ $data->penghasilan_ayah == 'Lebih dari Rp. 20.000.000' ? 'selected' : '' }} @else
+                                            {{ old('penghasilan_ayah') == 'Lebih dari Rp. 20.000.000' ? 'selected' : '' }} @endif>
+                                    Lebih dari Rp. 20.000.000</option>
+                                <option value="Kurang dari Rp. 500.000"
+                                    @if ($data == true && $data->penghasilan_ayah != null) {{ $data->penghasilan_ayah == 'Kurang dari Rp. 500.000' ? 'selected' : '' }} @else
+                                            {{ old('penghasilan_ayah') == 'Kurang dari Rp. 500.000' ? 'selected' : '' }} @endif>
+                                    Kurang dari Rp. 500.000</option>
                             </select>
                             @error('penghasilan_ayah')
                                 <span class="invalid-feedback" role="alert">
@@ -233,7 +315,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="card mt-4">
                 <div class="card-header">
                     <h6 class="text-primary">Identitas Ibu</h6>
@@ -317,21 +398,60 @@
                             <select class="form-control @error('pekerjaan_ibu') is-invalid @enderror"
                                 name="pekerjaan_ibu" id="">
                                 <option value="">-- Pilih Pekerjaan Ibu --</option>
-                                <option value="karyawan swasta"
-                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'karyawan swasta' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'karyawan swasta' ? 'selected' : '' }} @endif>
-                                    Karyawan Swasta</option>
-                                <option value="pegawai negeri"
-                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'pegawai negeri' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'pegawai negeri' ? 'selected' : '' }} @endif>
-                                    Pegawai Negeri</option>
-                                <option value="wiraswasta"
-                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'wiraswasta' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'wiraswasta' ? 'selected' : '' }} @endif>
-                                    Wiraswasta</option>
-                                <option value="pensiunan"
-                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'pensiunan' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'pensiunan' ? 'selected' : '' }} @endif>
+                                <option value="Pimpinan/Manjerial"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Pimpinan/Manjerial' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Pimpinan/Manjerial' ? 'selected' : '' }} @endif>
+                                    Pimpinan/Manjerial</option>
+                                <option value="PNS/TNI/Polri"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'PNS/TNI/Polri' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'PNS/TNI/Polri' ? 'selected' : '' }} @endif>
+                                    PNS/TNI/Polri</option>
+                                <option value="Pensiunan"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Pensiunan' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Pensiunan' ? 'selected' : '' }} @endif>
                                     Pensiunan</option>
-                                <option value="ibu rumah tangga"
-                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'ibu rumah tangga' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'ibu rumah tangga' ? 'selected' : '' }} @endif>
-                                    Ibu Rumah Tangga</option>
+                                <option value="Peternak"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Peternak' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Peternak' ? 'selected' : '' }} @endif>
+                                    Peternak</option>
+                                <option value="Wiraswasta"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Wiraswasta' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Wiraswasta' ? 'selected' : '' }} @endif>
+                                    Wiraswasta</option>
+                                <option value="Petani"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Petani' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Petani' ? 'selected' : '' }} @endif>
+                                    Petani</option>
+                                <option value="Tim Ahli/Konsultan"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Tim Ahli/Konsultan' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Tim Ahli/Konsultan' ? 'selected' : '' }} @endif>
+                                    Tim Ahli/Konsultan</option>
+                                <option value="Tenaga Pengajar/Instruktur/Fasilitator"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Tenaga Pengajar/Instruktur/Fasilitator' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Tenaga Pengajar/Instruktur/Fasilitator' ? 'selected' : '' }} @endif>
+                                    Tenaga Pengajar/Instruktur/Fasilitator</option>
+                                <option value="Sudah Meninggal"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Sudah Meninggal' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Sudah Meninggal' ? 'selected' : '' }} @endif>
+                                    Sudah Meninggal</option>
+                                <option value="Tidak Bekerja"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Tidak Bekerja' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Tidak Bekerja' ? 'selected' : '' }} @endif>
+                                    Tidak Bekerja</option>
+                                <option value="Pedagang Kecil"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Pedagang Kecil' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Pedagang Kecil' ? 'selected' : '' }} @endif>
+                                    Pedagang Kecil</option>
+                                <option value="Magang"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Magang' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Magang' ? 'selected' : '' }} @endif>
+                                    Magang</option>
+                                <option value="Nelayan"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Nelayan' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Nelayan' ? 'selected' : '' }} @endif>
+                                    Nelayan</option>
+                                <option value="Pedagang Besar"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Pedagang Besar' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Pedagang Besar' ? 'selected' : '' }} @endif>
+                                    Pedagang Besar</option>
+                                <option value="Karyawan Swasta"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Karyawan Swasta' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Karyawan Swasta' ? 'selected' : '' }} @endif>
+                                    Karyawan Swasta</option>
+                                <option value="Buruh"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Buruh' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Buruh' ? 'selected' : '' }} @endif>
+                                    Buruh</option>
+                                <option value="Peneliti"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Peneliti' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Peneliti' ? 'selected' : '' }} @endif>
+                                    Peneliti</option>
+                                <option value="Wirausaha"
+                                    @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'Wirausaha' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'Wirausaha' ? 'selected' : '' }} @endif>
+                                    Wirausaha</option>
                                 <option value="lainnya"
                                     @if ($data == true && $data->pekerjaan_ibu != null) {{ $data->pekerjaan_ibu == 'lainnya' ? 'selected' : '' }} @else {{ old('pekerjaan_ibu') == 'lainnya' ? 'selected' : '' }} @endif>
                                     Lainnya</option>
@@ -350,24 +470,76 @@
                             <select class="form-control @error('pendidikan_ibu') is-invalid @enderror"
                                 name="pendidikan_ibu" id="">
                                 <option value="">-- Pilih Pendidikan Terakhir Ibu --</option>
-                                <option value="SD"
-                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'SD' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'SD' ? 'selected' : '' }} @endif>
-                                    SD</option>
-                                <option value="SMP/Mts"
-                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'SMP/Mts' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'SMP/Mts' ? 'selected' : '' }} @endif>
-                                    SMP/Mts</option>
-                                <option value="SMA/SMK"
-                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'SMA/SMK' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'SMA/SMK' ? 'selected' : '' }} @endif>
-                                    SMA/SMK</option>
-                                <option value="Diploma"
-                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'Diploma' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'Diploma' ? 'selected' : '' }} @endif>
-                                    Diploma</option>
-                                <option value="Sarjana"
-                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'Sarjana' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'Sarjana' ? 'selected' : '' }} @endif>
-                                    Sarjana</option>
-                                <option value="Pasca Sarjana"
-                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'Pasca Sarjana' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'Pasca Sarjana' ? 'selected' : '' }} @endif>
-                                    Pasca Sarjana</option>
+                                <option value="SD/Sederajat"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'SD/Sederajat' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'SD/Sederajat' ? 'selected' : '' }} @endif>
+                                    SD/Sederajat</option>
+                                <option value="Paket C"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'Paket C' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'Paket C' ? 'selected' : '' }} @endif>
+                                    Paket C</option>
+                                <option value="S1"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'S1' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'S1' ? 'selected' : '' }} @endif>
+                                    S1</option>
+                                <option value="Tidak Sekolah"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'Tidak Sekolah' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'Tidak Sekolah' ? 'selected' : '' }} @endif>
+                                    Tidak Sekolah</option>
+                                <option value="SMP/Sederajat"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'SMP/Sederajat' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'SMP/Sederajat' ? 'selected' : '' }} @endif>
+                                    SMP/Sederajat</option>
+                                <option value="Putus SD"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'Putus SD' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'Putus SD' ? 'selected' : '' }} @endif>
+                                    Putus SD</option>
+                                <option value="S2"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'S2' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'S2' ? 'selected' : '' }} @endif>
+                                    S2</option>
+                                <option value="Sp-1"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'Sp-1' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'Sp-1' ? 'selected' : '' }} @endif>
+                                    Sp-1</option>
+                                <option value="PAUD"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'PAUD' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'PAUD' ? 'selected' : '' }} @endif>
+                                    PAUD</option>
+                                <option value="D1"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'D1' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'D1' ? 'selected' : '' }} @endif>
+                                    D1</option>
+                                <option value="Informal"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'Informal' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'Informal' ? 'selected' : '' }} @endif>
+                                    Informal</option>
+                                <option value="Profesi"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'Profesi' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'Profesi' ? 'selected' : '' }} @endif>
+                                    Profesi</option>
+                                <option value="S2 Terapan"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'S2 Terapan' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'S2 Terapan' ? 'selected' : '' }} @endif>
+                                    S2 Terapan</option>
+                                <option value="S3 Terapan"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'S3 Terapan' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'S3 Terapan' ? 'selected' : '' }} @endif>
+                                    S3 Terapan</option>
+                                <option value="SMA/Sederajat"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'SMA/Sederajat' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'SMA/Sederajat' ? 'selected' : '' }} @endif>
+                                    SMA/Sederajat</option>
+                                <option value="S3"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'S3' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'S3' ? 'selected' : '' }} @endif>
+                                    S3</option>
+                                <option value="TK/Sederajat"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'TK/Sederajat' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'TK/Sederajat' ? 'selected' : '' }} @endif>
+                                    TK/Sederajat</option>
+                                <option value="Non formal"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'Non formal' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'Non formal' ? 'selected' : '' }} @endif>
+                                    Non formal</option>
+                                <option value="Paket A"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'Paket A' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'Paket A' ? 'selected' : '' }} @endif>
+                                    Paket A</option>
+                                <option value="D4"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'D4' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'D4' ? 'selected' : '' }} @endif>
+                                    D4</option>
+                                <option value="D3"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'D3' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'D3' ? 'selected' : '' }} @endif>
+                                    D3</option>
+                                <option value="D2"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'D2' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'D2' ? 'selected' : '' }} @endif>
+                                    D2</option>
+                                <option value="Lainnya"
+                                    @if ($data == true && $data->pendidikan_ibu != null) {{ $data->pendidikan_ibu == 'Lainnya' ? 'selected' : '' }} @else {{ old('pendidikan_ibu') == 'Lainnya' ? 'selected' : '' }} @endif>
+                                    Lainnya</option>
+
                             </select>
                             @error('pendidikan_ibu')
                                 <span class="invalid-feedback" role="alert">
@@ -413,17 +585,30 @@
                             <select class="form-control @error('penghasilan_ibu') is-invalid @enderror"
                                 name="penghasilan_ibu" id="">
                                 <option value="">-- Pilih Penghasilan Ibu --</option>
-                                <option value="<1juta"
-                                    @if ($data == true && $data->penghasilan_ibu != null) {{ $data->penghasilan_ibu == '<1juta' ? 'selected' : '' }} @else {{ old('penghasilan_ibu') == '<1juta' ? 'selected' : '' }} @endif>
-                                    < 1 Juta</option>
-                                <option value="2 - 4juta"
-                                    @if ($data == true && $data->penghasilan_ibu != null) {{ $data->penghasilan_ibu == '2 - 4juta' ? 'selected' : '' }} @else {{ old('penghasilan_ibu') == '2 - 4juta' ? 'selected' : '' }} @endif>
-                                    2 - 4 Juta</option>
-                                <option value=">5juta" @if ($data == true && $data->penghasilan_ibu != null)
-                                    {{ $data->penghasilan_ibu == '>5juta' ? 'selected' : '' }}
-                                @else
-                                    {{ old('penghasilan_ibu') == '>5juta' ? 'selected' : '' }}
-                                    @endif> > 5 Juta</option>
+                                <option value="Rp. 5.000.000-Rp. 20.000.000"
+                                    @if ($data == true && $data->penghasilan_ibu != null) {{ $data->penghasilan_ibu == 'Rp. 5.000.000-Rp. 20.000.000' ? 'selected' : '' }} @else 
+                                            {{ old('penghasilan_ibu') == 'Rp. 5.000.000-Rp. 20.000.000' ? 'selected' : '' }} @endif>
+                                    Rp. 5.000.000-Rp. 20.000.000</option>
+                                <option value="Rp. 2.000.000-Rp. 4.999.999"
+                                    @if ($data == true && $data->penghasilan_ibu != null) {{ $data->penghasilan_ibu == 'Rp. 2.000.000-Rp. 4.999.999' ? 'selected' : '' }} @else 
+                                            {{ old('penghasilan_ibu') == 'Rp. 2.000.000-Rp. 4.999.999' ? 'selected' : '' }} @endif>
+                                    Rp. 2.000.000-Rp. 4.999.999</option>
+                                <option value="Rp. 1.000.000-Rp. 1.999.999"
+                                    @if ($data == true && $data->penghasilan_ibu != null) {{ $data->penghasilan_ibu == 'Rp. 1.000.000-Rp. 1.999.999' ? 'selected' : '' }} @else
+                                            {{ old('penghasilan_ibu') == 'Rp. 1.000.000-Rp. 1.999.999' ? 'selected' : '' }} @endif>
+                                    Rp. 1.000.000-Rp. 1.999.999</option>
+                                <option value="Rp. 500.000-Rp. 999.999"
+                                    @if ($data == true && $data->penghasilan_ibu != null) {{ $data->penghasilan_ibu == 'Rp. 500.000-Rp. 999.999' ? 'selected' : '' }} @else
+                                            {{ old('penghasilan_ibu') == 'Rp. 500.000-Rp. 999.999' ? 'selected' : '' }} @endif>
+                                    Rp. 500.000-Rp. 999.999</option>
+                                <option value="Lebih dari Rp. 20.000.000"
+                                    @if ($data == true && $data->penghasilan_ibu != null) {{ $data->penghasilan_ibu == 'Lebih dari Rp. 20.000.000' ? 'selected' : '' }} @else
+                                            {{ old('penghasilan_ibu') == 'Lebih dari Rp. 20.000.000' ? 'selected' : '' }} @endif>
+                                    Lebih dari Rp. 20.000.000</option>
+                                <option value="Kurang dari Rp. 500.000"
+                                    @if ($data == true && $data->penghasilan_ibu != null) {{ $data->penghasilan_ibu == 'Kurang dari Rp. 500.000' ? 'selected' : '' }} @else
+                                            {{ old('penghasilan_ibu') == 'Kurang dari Rp. 500.000' ? 'selected' : '' }} @endif>
+                                    Kurang dari Rp. 500.000</option>
                             </select>
                             @error('penghasilan_ibu')
                                 <span class="invalid-feedback" role="alert">
@@ -435,11 +620,17 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary btn-md mt-2 mb-2 float-right">Simpan dan Lanjutkan</button>
+            <div class="d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary btn-md mt-2 mb-2">Simpan dan Lanjutkan</button>
+            </div>
         </form>
     </div>
 
-    <div class="mb-4" id="wali" style="display: none">
+    {{-- form ibu --}}
+
+
+    {{-- form wali --}}
+    <div class="mb-4" id="wali">
         <div class="card">
             <form action="{{ url('postWali') }}" method="post">
                 @csrf
@@ -522,24 +713,63 @@
                         <label for="pekerjaan" class="col-sm-2 col-form-label">Pekerjaan<strong
                                 style="color: red">*</strong></label>
                         <div class="col-sm-10">
-                            <select class="form-control @error('pekerjaan_ayah') is-invalid @enderror"
-                                name="pekerjaan_ayah" id="">
+                            <select class="form-control @error('pekerjaan_wali') is-invalid @enderror"
+                                name="pekerjaan_wali" id="">
                                 <option value="">-- Pilih Pekerjaan Wali --</option>
-                                <option value="karyawan swasta"
-                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'karyawan swasta' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'karyawan swasta' ? 'selected' : '' }} @endif>
-                                    Karyawan Swasta</option>
-                                <option value="pegawai negeri"
-                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'pegawai negeri' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'pegawai negeri' ? 'selected' : '' }} @endif>
-                                    Pegawai Negeri</option>
-                                <option value="wiraswasta"
-                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'wiraswasta' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'wiraswasta' ? 'selected' : '' }} @endif>
-                                    Wiraswasta</option>
-                                <option value="pensiunan"
-                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'pensiunan' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'pensiunan' ? 'selected' : '' }} @endif>
+                                <option value="Pimpinan/Manjerial"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Pimpinan/Manjerial' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Pimpinan/Manjerial' ? 'selected' : '' }} @endif>
+                                    Pimpinan/Manjerial</option>
+                                <option value="PNS/TNI/Polri"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'PNS/TNI/Polri' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'PNS/TNI/Polri' ? 'selected' : '' }} @endif>
+                                    PNS/TNI/Polri</option>
+                                <option value="Pensiunan"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Pensiunan' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Pensiunan' ? 'selected' : '' }} @endif>
                                     Pensiunan</option>
-                                <option value="ibu rumah tangga"
-                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'ibu rumah tangga' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'ibu rumah tangga' ? 'selected' : '' }} @endif>
-                                    Ibu Rumah Tangga</option>
+                                <option value="Peternak"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Peternak' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Peternak' ? 'selected' : '' }} @endif>
+                                    Peternak</option>
+                                <option value="Wiraswasta"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Wiraswasta' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Wiraswasta' ? 'selected' : '' }} @endif>
+                                    Wiraswasta</option>
+                                <option value="Petani"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Petani' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Petani' ? 'selected' : '' }} @endif>
+                                    Petani</option>
+                                <option value="Tim Ahli/Konsultan"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Tim Ahli/Konsultan' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Tim Ahli/Konsultan' ? 'selected' : '' }} @endif>
+                                    Tim Ahli/Konsultan</option>
+                                <option value="Tenaga Pengajar/Instruktur/Fasilitator"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Tenaga Pengajar/Instruktur/Fasilitator' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Tenaga Pengajar/Instruktur/Fasilitator' ? 'selected' : '' }} @endif>
+                                    Tenaga Pengajar/Instruktur/Fasilitator</option>
+                                <option value="Sudah Meninggal"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Sudah Meninggal' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Sudah Meninggal' ? 'selected' : '' }} @endif>
+                                    Sudah Meninggal</option>
+                                <option value="Tidak Bekerja"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Tidak Bekerja' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Tidak Bekerja' ? 'selected' : '' }} @endif>
+                                    Tidak Bekerja</option>
+                                <option value="Pedagang Kecil"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Pedagang Kecil' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Pedagang Kecil' ? 'selected' : '' }} @endif>
+                                    Pedagang Kecil</option>
+                                <option value="Magang"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Magang' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Magang' ? 'selected' : '' }} @endif>
+                                    Magang</option>
+                                <option value="Nelayan"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Nelayan' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Nelayan' ? 'selected' : '' }} @endif>
+                                    Nelayan</option>
+                                <option value="Pedagang Besar"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Pedagang Besar' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Pedagang Besar' ? 'selected' : '' }} @endif>
+                                    Pedagang Besar</option>
+                                <option value="Karyawan Swasta"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Karyawan Swasta' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Karyawan Swasta' ? 'selected' : '' }} @endif>
+                                    Karyawan Swasta</option>
+                                <option value="Buruh"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Buruh' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Buruh' ? 'selected' : '' }} @endif>
+                                    Buruh</option>
+                                <option value="Peneliti"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Peneliti' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Peneliti' ? 'selected' : '' }} @endif>
+                                    Peneliti</option>
+                                <option value="Wirausaha"
+                                    @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'Wirausaha' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'Wirausaha' ? 'selected' : '' }} @endif>
+                                    Wirausaha</option>
                                 <option value="lainnya"
                                     @if ($data == true && $data->pekerjaan_wali != null) {{ $data->pekerjaan_wali == 'lainnya' ? 'selected' : '' }} @else {{ old('pekerjaan_wali') == 'lainnya' ? 'selected' : '' }} @endif>
                                     Lainnya</option>
@@ -616,7 +846,7 @@
     {{-- <hr> --}}
 @endsection
 @push('footer')
-    <script>
+    {{-- <script>
         function pilihOrtuWali(pilih) {
             document.getElementById('ortu').style.display = pilih === 'ortu' ? 'block' : 'none';
             document.getElementById('wali').style.display = pilih === 'wali' ? 'block' : 'none';
@@ -629,5 +859,5 @@
                 pilihOrtuWali(selected);
             }
         });
-    </script>
+    </script> --}}
 @endpush
